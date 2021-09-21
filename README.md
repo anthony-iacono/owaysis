@@ -48,7 +48,7 @@ Turing School of Software & Design
 [GitHub](https://github.com/turingschool) | [LinkedIn](https://www.linkedin.com/school/turingschool/) | [Website](https://turing.edu/)
 
 ## Planning
-App development planned and tracked using [GitHub Projects](https://github.com/users/anthony-iacono/projects/2)
+App development planned and tracked using [GitHub Projects](https://github.com/anthony-iacono/owaysis/projects/2)
 
 ## Wins
   -
