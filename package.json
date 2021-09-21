@@ -1,6 +1,6 @@
 {
   "name": "owaysis",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A hotel management tool for customers and staff to manage bookings and calculate bills",
   "main": "src/index.js",
   "repository": {
