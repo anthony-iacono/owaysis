@@ -1,13 +1,13 @@
 {
-  "name": "webpack-starter-kit",
-  "version": "2.0.0",
-  "description": "Project starter kit using webpack, mocha, chai, and SCSS/SASS enabled",
+  "name": "owaysis",
+  "version": "0.0.1",
+  "description": "A hotel management tool for customers and staff to manage bookings and calculate bills",
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turingschool-examples/webpack-starter-kit.git"
+    "url": "git+https://github.com/anthony-iacono/owaysis.git"
   },
-  "author": "Turing School of Software and Design",
+  "author": "Anthony Iacono, Turing School of Software & Design",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.4",
