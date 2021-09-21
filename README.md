@@ -43,7 +43,9 @@ To run the app locally:
   - Robbie Jaeger (PM) [GitHub](https://github.com/robbiejaeger) | [LinkedIn](https://www.linkedin.com/in/robertjaeger0/)
 
 [Project specification](https://frontend.turing.edu/projects/overlook.html), [Webpack Starter Kit](https://github.com/turingschool-examples/webpack-starter-kit), and [API](https://github.com/turingschool-examples/overlook-api) provided by:
-Turing School of Software & Design [GitHub](https://github.com/turingschool) | [LinkedIn](https://www.linkedin.com/school/turingschool/) | [Website](https://turing.edu/)
+
+Turing School of Software & Design
+[GitHub](https://github.com/turingschool) | [LinkedIn](https://www.linkedin.com/school/turingschool/) | [Website](https://turing.edu/)
 
 ## Planning
 App development planned and tracked using [GitHub Projects](https://github.com/users/anthony-iacono/projects/2)
