@@ -1,4 +1,4 @@
-# Owaysis
+# Oasys
 *A hotel management tool for customers and staff to manage bookings and calculate bills*
 
 ## Abstract
