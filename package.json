@@ -1,12 +1,12 @@
 {
-  "name": "owaysis",
+  "name": "oasys",
   "version": "0.1.0",
   "description": "A hotel management tool for customers and staff to manage bookings and calculate bills",
   "main": "src/index.js",
-  "homepage": "https://anthony-iacono.github.io/owaysis/",
+  "homepage": "https://anthony-iacono.github.io/oasys/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anthony-iacono/owaysis.git"
+    "url": "git+https://github.com/anthony-iacono/oasys.git"
   },
   "author": "Anthony Iacono, Turing School of Software & Design",
   "license": "MIT",

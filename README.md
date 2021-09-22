@@ -5,7 +5,7 @@
 
 
 ## Deployment
-Access the latest deployment [here](https://anthony-iacono.github.io/owaysis/)
+Access the latest deployment [here](https://anthony-iacono.github.io/oasys/)
 
 ## Demo
 [gif]
@@ -32,7 +32,7 @@ Access the latest deployment [here](https://anthony-iacono.github.io/owaysis/)
 
 ## Setup
 To run the app locally:
-  - Fork [this repository](https://github.com/anthony-iacono/owaysis)
+  - Fork [this repository](https://github.com/anthony-iacono/oasys)
   - Clone the repository and cd into it
   - Run `npm install`
   - Run `npm start`
@@ -48,7 +48,7 @@ Turing School of Software & Design
 [GitHub](https://github.com/turingschool) | [LinkedIn](https://www.linkedin.com/school/turingschool/) | [Website](https://turing.edu/)
 
 ## Planning
-App development planned and tracked using [GitHub Projects](https://github.com/anthony-iacono/owaysis/projects/2)
+App development planned and tracked using [GitHub Projects](https://github.com/anthony-iacono/oasys/projects/2)
 
 ## Wins
   -
