@@ -11,5 +11,8 @@ import api from './api';
 
 api.getAllCustomers();
 api.getSingleCustomer(1);
+api.getAllRooms();
+api.getAllBookings();
+api.addNewBooking(1, '2021/10/01', 1);
 
 console.log('This is the JavaScript entry file - your code begins here.');
