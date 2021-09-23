@@ -12,7 +12,7 @@ const api = {
       .catch(error => console.error(error));
   },
 
-  getSingleCustomer(id) {
+  getCustomer(id) {
     fetch(`http://localhost:3001/api/v1/customers/${id}`)
       .then(response => {
         if (!response.ok) {
@@ -21,7 +21,7 @@ const api = {
 
         return response.json();
       })
-      .then(singleCustomer => console.log(singleCustomer))
+      .then(customer => console.log(customer))
       .catch(error => console.error(error));
   },
 
@@ -51,8 +51,8 @@ const api = {
       .catch(error => console.error(error));
   },
 
-  addNewBooking(userID, date, roomNumber) {
-    fetch('http://localhost:3001/api/v1/bookings', {
+  addBooking(userID, date, roomNumber) {
+    return fetch('http://localhost:3001/api/v1/bookings', {
       method: 'POST',
       body: JSON.stringify({
         userID: userID,
@@ -68,7 +68,26 @@ const api = {
 
         return response.json();
       })
-      .then(newBooking => console.log(newBooking))
+      .then(newBooking => {
+        console.log(newBooking);
+        return newBooking;
+      })
+      .catch(error => console.error(error));
+  },
+
+  deleteBooking(id) {
+    fetch(`http://localhost:3001/api/v1/bookings/${id}`, {
+      method: 'DELETE',
+      headears: { 'Content-Type': 'application/json' }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then(deletedBooking => console.log(deletedBooking))
       .catch(error => console.error(error));
   }
 }
