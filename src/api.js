@@ -8,7 +8,7 @@ const api = {
 
         return response.json();
       })
-      .then(allCustomers => console.log(allCustomers))
+      .then(data => data.customers)
       .catch(error => console.error(error));
   },
 
@@ -21,7 +21,7 @@ const api = {
 
         return response.json();
       })
-      .then(customer => console.log(customer))
+      .then(customer => customer)
       .catch(error => console.error(error));
   },
 
@@ -34,7 +34,7 @@ const api = {
 
         return response.json();
       })
-      .then(allRooms => console.log(allRooms))
+      .then(data => data.rooms)
       .catch(error => console.error(error));
   },
 
@@ -47,7 +47,7 @@ const api = {
 
         return response.json();
       })
-      .then(allBookings => console.log(allBookings))
+      .then(data => data.bookings)
       .catch(error => console.error(error));
   },
 
@@ -68,9 +68,9 @@ const api = {
 
         return response.json();
       })
-      .then(newBooking => {
-        console.log(newBooking);
-        return newBooking;
+      .then(data => {
+        console.log(data.message);
+        return data.newBooking;
       })
       .catch(error => console.error(error));
   },
@@ -87,7 +87,7 @@ const api = {
 
         return response.json();
       })
-      .then(deletedBooking => console.log(deletedBooking))
+      .then(data => console.log(data.message))
       .catch(error => console.error(error));
   }
 }

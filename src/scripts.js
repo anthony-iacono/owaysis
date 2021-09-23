@@ -11,5 +11,5 @@ api.getAllRooms();
 api.getAllBookings();
 const newBooking = api.addBooking(1, '2021/10/01', 1);
 const deleteBooking = newBooking.then(newBooking => {
-  api.deleteBooking(newBooking.newBooking.id);
+  api.deleteBooking(newBooking.id);
 });
