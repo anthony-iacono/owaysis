@@ -1,7 +1,10 @@
 const api = {
   getAllCustomers() {
     return fetch('http://localhost:3001/api/v1/customers')
-      .then(catchHttpError(response))
+      .then(respone => {
+        checkHttpError(response);
+        return response.json();
+      })
       .then(data => {
         console.log(data);
         return data.customers;
@@ -11,21 +14,30 @@ const api = {
 
   getCustomer(id) {
     return fetch(`http://localhost:3001/api/v1/customers/${id}`)
-      .then(catchHttpError(response))
+      .then(respone => {
+        checkHttpError(response);
+        return response.json();
+      })
       .then(customer => customer)
       .catch(error => console.error(error));
   },
 
   getAllRooms() {
     return fetch('http://localhost:3001/api/v1/rooms')
-      .then(catchHttpError(response))
+      .then(respone => {
+        checkHttpError(response);
+        return response.json();
+      })
       .then(data => data.rooms)
       .catch(error => console.error(error));
   },
 
   getAllBookings() {
     return fetch('http://localhost:3001/api/v1/bookings')
-      .then(catchHttpError(response))
+      .then(respone => {
+        checkHttpError(response);
+        return response.json();
+      })
       .then(data => data.bookings)
       .catch(error => console.error(error));
   },
@@ -40,7 +52,10 @@ const api = {
       }),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(catchHttpError(response))
+      .then(respone => {
+        checkHttpError(response);
+        return response.json();
+      })
       .then(data => {
         console.log(data.message);
         return data.newBooking;
@@ -53,17 +68,17 @@ const api = {
       method: 'DELETE',
       headears: { 'Content-Type': 'application/json' }
     })
-      .then(catchHttpError(response))
+      .then(respone => {
+        checkHttpError(response);
+        return response.json();
+      })
       .then(data => console.log(data.message))
       .catch(error => console.error(error));
   },
 
-  catchHttpError(response) {
+  checkHttpError(response) {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return response.json();
     }
   }
 }
