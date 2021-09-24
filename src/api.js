@@ -1,21 +1,18 @@
 const api = {
   getAllCustomers() {
     return fetch('http://localhost:3001/api/v1/customers')
-      .then(respone => {
-        checkHttpError(response);
+      .then(response => {
+        this.checkHttpError(response);
         return response.json();
       })
-      .then(data => {
-        console.log(data);
-        return data.customers;
-      })
+      .then(data => data.customers)
       .catch(error => console.error(error));
   },
 
   getCustomer(id) {
     return fetch(`http://localhost:3001/api/v1/customers/${id}`)
-      .then(respone => {
-        checkHttpError(response);
+      .then(response => {
+        this.checkHttpError(response);
         return response.json();
       })
       .then(customer => customer)
@@ -24,8 +21,8 @@ const api = {
 
   getAllRooms() {
     return fetch('http://localhost:3001/api/v1/rooms')
-      .then(respone => {
-        checkHttpError(response);
+      .then(response => {
+        this.checkHttpError(response);
         return response.json();
       })
       .then(data => data.rooms)
@@ -34,8 +31,8 @@ const api = {
 
   getAllBookings() {
     return fetch('http://localhost:3001/api/v1/bookings')
-      .then(respone => {
-        checkHttpError(response);
+      .then(response => {
+        this.checkHttpError(response);
         return response.json();
       })
       .then(data => data.bookings)
@@ -52,8 +49,8 @@ const api = {
       }),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(respone => {
-        checkHttpError(response);
+      .then(response => {
+        this.checkHttpError(response);
         return response.json();
       })
       .then(data => {
@@ -68,8 +65,8 @@ const api = {
       method: 'DELETE',
       headears: { 'Content-Type': 'application/json' }
     })
-      .then(respone => {
-        checkHttpError(response);
+      .then(response => {
+        this.checkHttpError(response);
         return response.json();
       })
       .then(data => console.log(data.message))
