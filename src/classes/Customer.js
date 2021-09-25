@@ -1,3 +1,5 @@
+import User from './User';
+
 class Customer extends User {
   constructor(username) {
     super(username)
