@@ -13,43 +13,42 @@ import api from './api';
 import Customer from './classes/Customer';
 import Hotel from './classes/Hotel';
 
-// Selectors ///////////////////////////////////////////////////////////////////
-
-const customerDashboard = dom.select('.js-customer');
-const header = dom.select('.js-header');
-const loginErrorMessage = dom.select('.js-login-error-message');
-const loginForm = dom.select('.js-login-form');
-const loginSubmitBtn = dom.select('.js-login-submit-btn');
-const passwordField = dom.select('.js-password-field');
-const usernameField = dom.select('.js-username-field');
+// Global Variable /////////////////////////////////////////////////////////////
 
 const top = {};
+
+// Selectors ///////////////////////////////////////////////////////////////////
+
+top.customerDashboard = dom.select('.js-customer');
+top.header = dom.select('.js-header');
+top.loginErrorMessage = dom.select('.js-login-error-message');
+top.loginForm = dom.select('.js-login-form');
+top.passwordField = dom.select('.js-password-field');
+top.usernameField = dom.select('.js-username-field');
 
 // On Load Functions ///////////////////////////////////////////////////////////
 
 window.onload = () => {
-  Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings(), api.addBooking(5, 234123, 5)])
-    .then(data => {
-      top.hotel = new Hotel(data[0], data[1], data[2]);
-      console.log(data[3]);
-    })
+  Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings()])
+    .then(data => top.hotel = new Hotel(data[0], data[1], data[2]));
 }
 
 // Functions ///////////////////////////////////////////////////////////////////
 
 const logIn = () => {
   event.preventDefault();
-  select.loginErrorMessage().innerText = '';
-  const username = usernameField.value;
+  top.loginErrorMessage.innerText = '';
+  const username = top.usernameField.value;
+  const passwordIsValid = top.passwordField.value === 'overlook2021';
   const userID = parseInt(username.slice(8));
   const customer = top.hotel.customers.find(customer => customer.id === userID)
-  if (customer) {
+  if (customer && passwordIsValid) {
     top.user = new Customer(username, customer.id, customer.name)
-  } else if (username === 'manager') {
+  } else if (username === 'manager' && passwordIsValid) {
     top.user = new Manager(username);
   } else {
-    loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
+    top.loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
   }
 }
 
-select.loginForm().addEventListener('submit', logIn);
+top.loginForm.addEventListener('submit', logIn);

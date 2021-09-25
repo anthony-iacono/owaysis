@@ -1,5 +1,5 @@
 const dom = {
-  
+
   displayCustomerDashboard() {
     show(select('js-customer-dashboard'));
   },
@@ -9,7 +9,7 @@ const dom = {
   },
 
   select(element) {
-    document.querySelector(element);
+    return document.querySelector(element);
   },
 
   show(...elements) {
