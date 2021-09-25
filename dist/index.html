@@ -13,12 +13,13 @@
   <main>
     <h1 class="header">header</h1>
     <section class="login-page">
-      <form class="login-form">
+      <form class="login-form js-login-form">
         <label for="username-input">Username</label>
-        <input type="text" name="username">
+        <input class="js-username-field" type="text" name="username">
         <label for="password-input">Password</label>
-        <input type="text" name="password">
+        <input class="js-password-field" type="text" name="password">
         <input type="submit">
+        <p class="login-error js-login-error-message"></p>
       </form>
     </section>
     <section class="customer-dashboard hidden">
