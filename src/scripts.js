@@ -6,6 +6,11 @@ import './images/turing-logo.png'
 import dom from './dom';
 import api from './api';
 
+import Customer from './classes/Customer';
+
+// const top = {
+//   customer = new Customer()
+// }
 
 
 

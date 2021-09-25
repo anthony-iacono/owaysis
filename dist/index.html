@@ -9,25 +9,36 @@
 <body>
   <header>
     <span>Oasys</span>
-    <h1>Customer Dashboard</h1>
   </header>
-  <main class="customer-dashboard">
-    <section class="dashboard-section">
-      <h2>Total Spent</h2>
-      <p>$0</p>
-    </section>
-    <section class="dashboard-section">
-      <h2>New Booking</h2>
-      <form class="">
+  <main>
+    <h1 class="header">header</h1>
+    <section class="login-page">
+      <form class="login-form">
+        <label for="username-input">Username</label>
+        <input type="text" name="username">
+        <label for="password-input">Password</label>
+        <input type="text" name="password">
+        <input type="submit">
       </form>
-      <section>
+    </section>
+    <section class="customer-dashboard hidden">
+      <section class="dashboard-section">
+        <h2>Total Spent</h2>
+        <p>$0</p>
       </section>
-    </section>
-    <section class="dashboard-section">
-      <h2>Upcoming</h2>
-    </section>
-    <section class="dashboard-section">
-      <h2>Past</h2>
+      <section class="dashboard-section">
+        <h2>New Booking</h2>
+        <form class="">
+        </form>
+        <section>
+        </section>
+      </section>
+      <section class="dashboard-section">
+        <h2>Upcoming</h2>
+      </section>
+      <section class="dashboard-section">
+        <h2>Past</h2>
+      </section>
     </section>
   </main>
   <script src="bundle.js"></script>
