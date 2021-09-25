@@ -1,9 +1,5 @@
 const dom = {
 
-  displayCustomerDashboard() {
-    show(select('js-customer-dashboard'));
-  },
-
   hide(...elements) {
     elements.forEach(element => element.classList.add('hidden'));
   },

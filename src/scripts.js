@@ -19,14 +19,15 @@ const top = {};
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
-top.customerDashboard = dom.select('.js-customer');
+top.customerDashboard = document.querySelector('.js-customer-dashboard');
 top.header = dom.select('.js-header');
 top.loginErrorMessage = dom.select('.js-login-error-message');
 top.loginForm = dom.select('.js-login-form');
+top.loginPage = dom.select('.js-login-page');
 top.passwordField = dom.select('.js-password-field');
 top.usernameField = dom.select('.js-username-field');
 
-// On Load Functions ///////////////////////////////////////////////////////////
+// On Load /////////////////////////////////////////////////////////////////////
 
 window.onload = () => {
   Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings()])
@@ -44,6 +45,8 @@ const logIn = () => {
   const customer = top.hotel.customers.find(customer => customer.id === userID)
   if (customer && passwordIsValid) {
     top.user = new Customer(username, customer.id, customer.name)
+    dom.show(top.customerDashboard);
+    dom.hide(top.loginPage);
   } else if (username === 'manager' && passwordIsValid) {
     top.user = new Manager(username);
   } else {
