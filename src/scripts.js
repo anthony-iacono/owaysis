@@ -25,6 +25,8 @@ const usernameField = dom.select('.js-username-field');
 
 const top = {};
 
+// On Load Functions ///////////////////////////////////////////////////////////
+
 window.onload = () => {
   Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings(), api.addBooking(5, 234123, 5)])
     .then(data => {
