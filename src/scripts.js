@@ -5,7 +5,6 @@ import './images/turing-logo.png'
 
 // Variable Imports ////////////////////////////////////////////////////////////
 
-import select from './select';
 import dom from './dom';
 import api from './api';
 
@@ -16,8 +15,13 @@ import Hotel from './classes/Hotel';
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
+const customerDashboard = dom.select('.js-customer');
 const header = dom.select('.js-header');
 const loginErrorMessage = dom.select('.js-login-error-message');
+const loginForm = dom.select('.js-login-form');
+const loginSubmitBtn = dom.select('.js-login-submit-btn');
+const passwordField = dom.select('.js-password-field');
+const usernameField = dom.select('.js-username-field');
 
 const top = {};
 
@@ -34,7 +38,7 @@ window.onload = () => {
 const logIn = () => {
   event.preventDefault();
   select.loginErrorMessage().innerText = '';
-  const username = dom.select('.js-username-field').value;
+  const username = usernameField.value;
   const userID = parseInt(username.slice(8));
   const customer = top.hotel.customers.find(customer => customer.id === userID)
   if (customer) {
