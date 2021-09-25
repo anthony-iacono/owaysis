@@ -3,6 +3,14 @@ class Manager extends User {
     super(username);
   }
 
+  getTodaysRevenue() {
+
+  }
+
+  findCustomer() {
+
+  }
+
   deleteBooking(bookingID) {
 
   }

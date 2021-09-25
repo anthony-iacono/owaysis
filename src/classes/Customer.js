@@ -6,9 +6,8 @@ class Customer extends User {
   }
 
   getCustomerInfo() {
-    
-  }
 
+  }
 }
 
 export default Customer;

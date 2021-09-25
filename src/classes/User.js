@@ -3,21 +3,19 @@ class User {
     this.username = username;
   }
 
-  
+  getTotalSpent(userID) {
+
+  }
 
   addBooking(userID, date, roomNumber) {
 
   }
 
-  getTotalSpent() {
+  getCurrentBookings(userID) {
 
   }
 
-  getCurrentBookings() {
-
-  }
-
-  getPastBookings() {
+  getPastBookings(userID) {
 
   }
 }
