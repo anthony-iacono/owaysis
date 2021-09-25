@@ -7,12 +7,17 @@ import dom from './dom';
 import api from './api';
 
 import Customer from './classes/Customer';
+import Hotel from './classes/Hotel';
 
-// const top = {
-//   customer = new Customer()
-// }
+const top = {};
 
-
+window.onload = () => {
+  const customers = api.getAllCustomers();
+  const rooms = api.getAllRooms();
+  const bookings = api.getAllBookings();
+  top.hotel = new Hotel(customers, rooms, bookings);
+  console.log(top.hotel);
+}
 
 
 // How to use data returned from a fetch call:
