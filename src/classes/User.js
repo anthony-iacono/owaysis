@@ -1,5 +1,23 @@
 class User {
-  constructor() {
+  constructor(username) {
+    this.username = username;
+  }
+
+  
+
+  addBooking(userID, date, roomNumber) {
+
+  }
+
+  getTotalSpent() {
+
+  }
+
+  getCurrentBookings() {
+
+  }
+
+  getPastBookings() {
 
   }
 }

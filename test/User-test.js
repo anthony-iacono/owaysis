@@ -21,8 +21,8 @@ describe('User', function() {
     expect(managerUser).to.be.an.instanceof(User);
   });
 
-  it('should store a name', function() {
-    expect(customerUser.name).to.equal('Leatha Ullrich');
-    expect(managerUser.name).to.equal('Manager');
+  it('should store a username', function() {
+    expect(customerUser.username).to.equal('Leatha Ullrich');
+    expect(managerUser.username).to.equal('Manager');
   });
 });

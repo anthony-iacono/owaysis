@@ -1,5 +1,9 @@
-class Manager {
-  constructor() {
+class Manager extends User {
+  constructor(username) {
+    super(username);
+  }
+
+  deleteBooking(bookingID) {
 
   }
 }
