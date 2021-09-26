@@ -41,10 +41,8 @@ window.onload = () => {
 
 const logIn = () => {
   event.preventDefault();
-  // const username = top.usernameField.value;
-  // const passwordIsValid = top.passwordField.value === 'overlook2021';
-  const username = 'customer2';
-  const passwordIsValid = true;
+  const username = top.usernameField.value;
+  const passwordIsValid = top.passwordField.value === 'overlook2021';
   const userID = parseInt(username.slice(8));
   const customer = top.hotel.customers.find(customer => customer.id === userID)
   if (customer && passwordIsValid) {
