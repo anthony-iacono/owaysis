@@ -10,15 +10,9 @@ class Customer extends User {
     this.rooms = [];
   }
 
-  getTotalSpent(bookings, rooms) {
+  getCustomerData(bookings, rooms) {
     this.getBookings(bookings, rooms);
-    this.totalSpent = this.bookings.reduce((total, booking) => {
-      const matchingRoom = this.rooms.find(room => {
-        return room.number === booking.roomNumber;
-      });
-      total += matchingRoom.costPerNight;
-      return total;
-    }, 0).toFixed(2);
+    this.getTotalSpent();
   }
 
   getBookings(bookings, rooms) {
@@ -34,8 +28,18 @@ class Customer extends User {
         this.rooms.push(room);
       }
 
-      return room.number === booking.roomNumber
+      return room.number === booking.roomNumber;
     });
+  }
+
+  getTotalSpent() {
+    this.totalSpent = this.bookings.reduce((total, booking) => {
+      const matchingRoom = this.rooms.find(room => {
+        return room.number === booking.roomNumber;
+      });
+      total += matchingRoom.costPerNight;
+      return total;
+    }, 0).toFixed(2);
   }
 }
 

@@ -21,7 +21,7 @@ const top = {};
 
 top.currentSection = dom.select('.js-current-bookings');
 top.customerDashboard = dom.select('.js-customer-dashboard');
-top.header = dom.select('.js-header');
+top.heading = dom.select('.js-heading');
 top.loginErrorMessage = dom.select('.js-login-error-message');
 top.loginForm = dom.select('.js-login-form');
 top.loginPage = dom.select('.js-login-page');
@@ -41,7 +41,6 @@ window.onload = () => {
 
 const logIn = () => {
   event.preventDefault();
-  top.loginErrorMessage.innerText = '';
   // const username = top.usernameField.value;
   // const passwordIsValid = top.passwordField.value === 'overlook2021';
   const username = 'customer2';
@@ -59,18 +58,11 @@ const logIn = () => {
 }
 
 const goToCustomerDashboard = () => {
+  top.user.getCustomerData(top.hotel.bookings, top.hotel.rooms);
   dom.show(top.customerDashboard);
   dom.hide(top.loginPage);
-  displayTotalSpent();
-  displayBookings();
-}
-
-const displayTotalSpent = () => {
-  top.user.getTotalSpent(top.hotel.bookings, top.hotel.rooms);
+  top.heading.innerText = 'Customer Dashboard';
   dom.fillTotalSpent(top.user, top.totalSpent);
-}
-
-const displayBookings = () => {
   dom.fillBookings(top.user, top.hotel.rooms, top.currentSection, top.pastSection);
 }
 

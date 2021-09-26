@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,31 +7,31 @@
   <title>Oasys</title>
 </head>
 <body>
-  <header>
-    <span>Oasys</span>
+  <header class="header">
+    <span class="logo">Oasys</span>
   </header>
   <main>
-    <h1 class="header">header</h1>
+    <h1 class="heading js-heading">Login</h1>
     <section class="login-page js-login-page">
       <form class="login-form js-login-form">
-        <label for="username-input">Username</label>
-        <input class="js-username-field" type="text" name="username">
-        <label for="password-input">Password</label>
-        <input class="js-password-field" type="text" name="password">
+        <label for="username-field">Username</label>
+        <input class="js-username-field" id="username-field" type="text" name="username">
+        <label for="password-field">Password</label>
+        <input class="js-password-field" id="password-field" type="text" name="password">
         <input type="submit">
-        <p class="login-error js-login-error-message"></p>
+        <p class="js-login-error-message"></p>
       </form>
     </section>
     <section class="customer-dashboard js-customer-dashboard hidden">
       <section class="dashboard-section">
         <h2>Total Spent</h2>
-        <p class="js-total-spent">$0</p>
+        <p class="js-total-spent"></p>
       </section>
       <section class="dashboard-section">
         <h2>New Booking</h2>
-        <form class="">
+        <form class="js-new-booking-form">
         </form>
-        <section>
+        <section class="js-results-section">
         </section>
       </section>
       <section class="dashboard-section">

@@ -22,6 +22,11 @@ body {
 }
 
 .header {
+  display: flex;
+  justify-content: center;
+}
+
+.heading {
   text-align: center;
 }
 
@@ -36,6 +41,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  font-size: 72px;
 }
 
 .hidden {

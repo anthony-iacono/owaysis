@@ -3,9 +3,9 @@ const dom = {
   fillBookings(user, rooms, currentSection, pastSection) {
     user.bookings.forEach(booking => {
       const room = user.rooms.find(room => room.number === booking.roomNumber);
-      let section = currentSection;
-      if (Date.parse(booking.date) < Date.now()) {
-        section = pastSection;
+      let section = pastSection;
+      if (Date.parse(booking.date) > Date.now()) {
+        section = currentSection;
       }
 
       section.innerHTML += `
@@ -34,10 +34,6 @@ const dom = {
 
   show(...elements) {
     elements.forEach(element => element.classList.remove('hidden'));
-  },
-
-  updateHeader(text) {
-    select.header().innerText = `${text}`;
   }
 }
 
