@@ -18,7 +18,7 @@ class Customer extends User {
       });
       total += matchingRoom.costPerNight;
       return total;
-    }, 0);
+    }, 0).toFixed(2);
   }
 
   getBookings(bookings, rooms) {
