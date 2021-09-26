@@ -39,13 +39,13 @@ const api = {
       .catch(error => console.error(error));
   },
 
-  addBooking(userID, date, roomNumber) {
+  addBooking(userID, date, roomNumber) {  
     return fetch('http://localhost:3001/api/v1/bookings', {
       method: 'POST',
       body: JSON.stringify({
         userID: userID,
         date: date,
-        roomNumber: 4
+        roomNumber: roomNumber
       }),
       headers: { 'Content-Type': 'application/json' }
     })

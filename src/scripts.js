@@ -19,7 +19,8 @@ const top = {};
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
-top.customerDashboard = document.querySelector('.js-customer-dashboard');
+top.currentBookings = dom.select('.js-current-bookings');
+top.customerDashboard = dom.select('.js-customer-dashboard');
 top.header = dom.select('.js-header');
 top.loginErrorMessage = dom.select('.js-login-error-message');
 top.loginForm = dom.select('.js-login-form');
@@ -60,11 +61,17 @@ const goToCustomerDashboard = () => {
   dom.show(top.customerDashboard);
   dom.hide(top.loginPage);
   displayTotalSpent();
+  displayBookings();
 }
 
 const displayTotalSpent = () => {
   top.user.getTotalSpent(top.hotel.bookings, top.hotel.rooms);
   dom.fillTotalSpent(top.user, top.totalSpent);
+}
+
+const displayBookings = () => {
+  // top.user.getBookings(top.hotel.bookings);
+  dom.fillBookings(top.user, top.hotel.rooms, top.currentBookings);
 }
 
 top.loginForm.addEventListener('submit', logIn);
