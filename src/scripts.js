@@ -70,7 +70,6 @@ const displayTotalSpent = () => {
 }
 
 const displayBookings = () => {
-  // top.user.getBookings(top.hotel.bookings);
   dom.fillBookings(top.user, top.hotel.rooms, top.currentBookings);
 }
 

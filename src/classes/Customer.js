@@ -11,16 +11,7 @@ class Customer extends User {
   }
 
   getTotalSpent(bookings, rooms) {
-    this.bookings = bookings.filter(booking => {
-      rooms.filter(room => {
-        if (!this.rooms.includes(room)) {
-          this.rooms.push(room);
-        }
-
-        return room.number === booking.roomNumber
-      });
-      return booking.userID === this.id
-    });
+    this.getBookings(bookings, rooms);
     this.totalSpent = this.bookings.reduce((total, booking) => {
       const matchingRoom = this.rooms.find(room => {
         return room.number === booking.roomNumber;
@@ -28,6 +19,23 @@ class Customer extends User {
       total += matchingRoom.costPerNight;
       return total;
     }, 0);
+  }
+
+  getBookings(bookings, rooms) {
+    this.bookings = bookings.filter(booking => {
+      this.getRooms(booking, rooms);
+      return booking.userID === this.id
+    });
+  }
+
+  getRooms(booking, rooms) {
+    rooms.filter(room => {
+      if (!this.rooms.includes(room)) {
+        this.rooms.push(room);
+      }
+
+      return room.number === booking.roomNumber
+    });
   }
 }
 

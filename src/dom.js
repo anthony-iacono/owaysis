@@ -3,7 +3,7 @@ const dom = {
   fillBookings(user, rooms, element) {
     user.bookings.forEach(booking => {
       const room = rooms.find(room => room.number === booking.roomNumber);
-      element.innerHTML = `
+      element.innerHTML += `
       <article id="${booking.id}">
         <p>Date: ${booking.date}</p>
         <p>Type: ${room.roomType}</p>
