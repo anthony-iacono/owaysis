@@ -25,6 +25,7 @@ top.loginErrorMessage = dom.select('.js-login-error-message');
 top.loginForm = dom.select('.js-login-form');
 top.loginPage = dom.select('.js-login-page');
 top.passwordField = dom.select('.js-password-field');
+top.totalSpent = dom.select('.js-total-spent');
 top.usernameField = dom.select('.js-username-field');
 
 // On Load /////////////////////////////////////////////////////////////////////
@@ -39,14 +40,18 @@ window.onload = () => {
 const logIn = () => {
   event.preventDefault();
   top.loginErrorMessage.innerText = '';
-  const username = top.usernameField.value;
-  const passwordIsValid = top.passwordField.value === 'overlook2021';
+  // const username = top.usernameField.value;
+  // const passwordIsValid = top.passwordField.value === 'overlook2021';
+  const username = 'customer5';
+  const passwordIsValid = true;
   const userID = parseInt(username.slice(8));
   const customer = top.hotel.customers.find(customer => customer.id === userID)
   if (customer && passwordIsValid) {
     top.user = new Customer(username, customer.id, customer.name)
     dom.show(top.customerDashboard);
     dom.hide(top.loginPage);
+    top.user.getTotalSpent(top.hotel.bookings, top.hotel.rooms);
+    dom.fillTotalSpent(top.user, top.totalSpent);
   } else if (username === 'manager' && passwordIsValid) {
     top.user = new Manager(username);
   } else {

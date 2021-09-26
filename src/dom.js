@@ -1,5 +1,9 @@
 const dom = {
 
+  fillTotalSpent(user, element) {
+    element.innerText = `$${user.totalSpent}`;
+  },
+
   hide(...elements) {
     elements.forEach(element => element.classList.add('hidden'));
   },
