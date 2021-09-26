@@ -1,9 +1,14 @@
 const dom = {
 
-  fillBookings(user, rooms, element) {
+  fillBookings(user, rooms, currentSection, pastSection) {
     user.bookings.forEach(booking => {
-      const room = rooms.find(room => room.number === booking.roomNumber);
-      element.innerHTML += `
+      const room = user.rooms.find(room => room.number === booking.roomNumber);
+      let section = currentSection;
+      if (Date.parse(booking.date) < Date.now()) {
+        section = pastSection;
+      }
+
+      section.innerHTML += `
       <article id="${booking.id}">
         <p>Date: ${booking.date}</p>
         <p>Type: ${room.roomType}</p>

@@ -19,13 +19,14 @@ const top = {};
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
-top.currentBookings = dom.select('.js-current-bookings');
+top.currentSection = dom.select('.js-current-bookings');
 top.customerDashboard = dom.select('.js-customer-dashboard');
 top.header = dom.select('.js-header');
 top.loginErrorMessage = dom.select('.js-login-error-message');
 top.loginForm = dom.select('.js-login-form');
 top.loginPage = dom.select('.js-login-page');
 top.passwordField = dom.select('.js-password-field');
+top.pastSection = dom.select('.js-past-bookings');
 top.totalSpent = dom.select('.js-total-spent');
 top.usernameField = dom.select('.js-username-field');
 
@@ -70,7 +71,7 @@ const displayTotalSpent = () => {
 }
 
 const displayBookings = () => {
-  dom.fillBookings(top.user, top.hotel.rooms, top.currentBookings);
+  dom.fillBookings(top.user, top.hotel.rooms, top.currentSection, top.pastSection);
 }
 
 top.loginForm.addEventListener('submit', logIn);
