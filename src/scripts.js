@@ -50,13 +50,17 @@ const logIn = () => {
     top.user = new Customer(username, customer.id, customer.name)
     dom.show(top.customerDashboard);
     dom.hide(top.loginPage);
-    top.user.getTotalSpent(top.hotel.bookings, top.hotel.rooms);
-    dom.fillTotalSpent(top.user, top.totalSpent);
+    displayTotalSpent();
   } else if (username === 'manager' && passwordIsValid) {
     top.user = new Manager(username);
   } else {
     top.loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
   }
+}
+
+const displayTotalSpent = () => {
+  top.user.getTotalSpent(top.hotel.bookings, top.hotel.rooms);
+  dom.fillTotalSpent(top.user, top.totalSpent);
 }
 
 top.loginForm.addEventListener('submit', logIn);
