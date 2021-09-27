@@ -1,5 +1,20 @@
 const dom = {
 
+  fillAvailableRooms(availableRooms, section) {
+    section.innerHTML = '';
+    availableRooms.forEach(availableRoom => {
+      section.innerHTML += `
+        <article>
+          <p>Type: ${availableRoom.roomType}</p>
+          <p>Bidet: ${availableRoom.bidet}</p>
+          <p>Bed Size: ${availableRoom.bedSize}</p>
+          <p>No. of Beds: ${availableRoom.numBeds}</p>
+          <p>Cost per Night: $${availableRoom.costPerNight}</p>
+        </article>
+      `
+    })
+  },
+
   fillBookings(user, rooms, currentSection, pastSection) {
     user.bookings.forEach(booking => {
       const room = user.rooms.find(room => room.number === booking.roomNumber);
@@ -14,7 +29,8 @@ const dom = {
         <p>Type: ${room.roomType}</p>
         <p>Bidet: ${room.bidet}</p>
         <p>Bed Size: ${room.bedSize}</p>
-        <p>
+        <p>No. of Beds: ${room.numBeds}</p>
+        <p>Cost per Night: $${room.costPerNight}</p>
       </article>
       `;
     })
@@ -34,7 +50,7 @@ const dom = {
 
   show(...elements) {
     elements.forEach(element => element.classList.remove('hidden'));
-  }
+  },
 }
 
 export default dom;

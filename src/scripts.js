@@ -19,6 +19,7 @@ const top = {};
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
+top.availableRoomsSection = dom.select('.js-available-rooms-section');
 top.currentSection = dom.select('.js-current-bookings');
 top.customerDashboard = dom.select('.js-customer-dashboard');
 top.defaultDate = dom.select('input[type="date"]');
@@ -82,12 +83,14 @@ const goToCustomerDashboard = () => {
   top.defaultDate.value = getTodaysDate();
   top.dateSelector.setAttribute('min', getTodaysDate());
   setMaxDate();
-  top.hotel.getRoomsByDate(top.dateSelector.value);
+  top.hotel.getAvailableRooms(top.dateSelector.value);
+  dom.fillAvailableRooms(top.hotel.availableRooms, top.availableRoomsSection);
   dom.fillBookings(top.user, top.hotel.rooms, top.currentSection, top.pastSection);
 }
 
 top.dateSelector.addEventListener('change', function() {
-  top.hotel.getRoomsByDate(top.dateSelector.value);
+  top.hotel.getAvailableRooms(top.dateSelector.value);
+  dom.fillAvailableRooms(top.hotel.availableRooms, top.availableRoomsSection);
 });
 
 top.loginForm.addEventListener('submit', logIn);

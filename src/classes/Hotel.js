@@ -3,16 +3,20 @@ class Hotel {
     this.customers = customers;
     this.rooms = rooms;
     this.bookings = bookings;
+    this.availableRooms = [];
   }
 
-  getRoomsByDate(selectedDate) {
-    const bookingsOnDate = this.bookings.filter(booking => {
+  getAvailableRooms(selectedDate) {
+    const unavailableRoomNums = [];
+    this.bookings.forEach(booking => {
       const bookingDate = booking.date.replace(/\//g, '-');
-      return bookingDate === selectedDate;
+      if (bookingDate === selectedDate && !unavailableRoomNums.includes(booking.roomNumber)) {
+        unavailableRoomNums.push(booking.roomNumber);
+      }
     });
-    const unavailableRooms = this.rooms.filter(room => {
-
-    });
+    this.availableRooms = this.rooms.filter(room => {
+      return !unavailableRoomNums.includes(room.number);
+    })
   }
 }
 
