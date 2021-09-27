@@ -3,8 +3,8 @@ class User {
     this.username = username;
   }
 
-  addBooking(userID, date, roomNumber) {
-
+  addBooking(date, hotel, roomNumber) {
+    
   }
 }
 

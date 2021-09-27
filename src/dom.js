@@ -4,7 +4,7 @@ const dom = {
     section.innerHTML = '';
     availableRooms.forEach(availableRoom => {
       section.innerHTML += `
-        <article class="${availableRoom.number}">
+        <article class="js-room-card" id='${availableRoom.number}'>
           <p>Type: ${availableRoom.roomType}</p>
           <p>Bidet: ${availableRoom.bidet}</p>
           <p>Bed Size: ${availableRoom.bedSize}</p>
@@ -16,6 +16,8 @@ const dom = {
   },
 
   fillBookings(user, rooms, currentSection, pastSection) {
+    // currentSection.innerHTML = '';
+    // pastSection.innerHTML = '';
     user.bookings.forEach(booking => {
       const room = user.rooms.find(room => room.number === booking.roomNumber);
       let section = pastSection;
