@@ -5,7 +5,8 @@ class Hotel {
     this.bookings = bookings;
     this.availableRooms;
     this.availableTypes;
-    this.selectedTypes;
+    this.selectedTags;
+    this.filteredRooms;
   }
 
   getAvailableRooms(selectedDate) {
@@ -30,6 +31,12 @@ class Hotel {
       return acc;
     }, []);
     console.log(this.availableTypes);
+  }
+
+  getFilteredRooms() {
+    this.filteredRooms = this.availableRooms.filter(availableRoom => {
+      return this.selectedTags.includes(availableRoom.roomType);
+    })
   }
 }
 
