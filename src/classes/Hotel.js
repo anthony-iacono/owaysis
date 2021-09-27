@@ -3,7 +3,9 @@ class Hotel {
     this.customers = customers;
     this.rooms = rooms;
     this.bookings = bookings;
-    this.availableRooms = [];
+    this.availableRooms;
+    this.availableTypes;
+    this.selectedTypes;
   }
 
   getAvailableRooms(selectedDate) {
@@ -17,6 +19,17 @@ class Hotel {
     this.availableRooms = this.rooms.filter(room => {
       return !unavailableRoomNums.includes(room.number);
     })
+  }
+
+  getAvailableTypes() {
+    this.availableTypes = this.availableRooms.reduce((acc, room) => {
+      if (!acc.includes(room.roomType)) {
+        acc.push(room.roomType);
+      }
+
+      return acc;
+    }, []);
+    console.log(this.availableTypes);
   }
 }
 

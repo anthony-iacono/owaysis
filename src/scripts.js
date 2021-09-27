@@ -28,10 +28,9 @@ top.heading = dom.select('.js-heading');
 top.loginErrorMessage = dom.select('.js-login-error-message');
 top.loginForm = dom.select('.js-login-form');
 top.loginPage = dom.select('.js-login-page');
-// top.maxDate = dom.select('input[min="date"]');
-// top.minDate = dom.select('input[min="date"]');
 top.passwordField = dom.select('.js-password-field');
 top.pastSection = dom.select('.js-past-bookings');
+top.tagsSection = dom.select('.js-tags-section');
 top.totalSpent = dom.select('.js-total-spent');
 top.usernameField = dom.select('.js-username-field');
 
@@ -85,6 +84,8 @@ const goToCustomerDashboard = () => {
   setMaxDate();
   top.hotel.getAvailableRooms(top.dateSelector.value);
   dom.fillAvailableRooms(top.hotel.availableRooms, top.availableRoomsSection);
+  top.hotel.getAvailableTypes();
+  dom.fillAvailableTypes(top.hotel.availableTypes, top.tagsSection);
   dom.fillBookings(top.user, top.hotel.rooms, top.currentSection, top.pastSection);
 }
 

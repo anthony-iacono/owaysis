@@ -4,7 +4,7 @@ const dom = {
     section.innerHTML = '';
     availableRooms.forEach(availableRoom => {
       section.innerHTML += `
-        <article>
+        <article class="${availableRoom.number}">
           <p>Type: ${availableRoom.roomType}</p>
           <p>Bidet: ${availableRoom.bidet}</p>
           <p>Bed Size: ${availableRoom.bedSize}</p>
@@ -33,6 +33,17 @@ const dom = {
         <p>Cost per Night: $${room.costPerNight}</p>
       </article>
       `;
+    })
+  },
+
+  fillAvailableTypes(availableTypes, section) {
+    section.innerHTML = '';
+    availableTypes.forEach(availableType => {
+      section.innerHTML += `
+        <label>
+        <input type="checkbox" name="${availableType}">${availableType}
+        </label>
+      `
     })
   },
 
