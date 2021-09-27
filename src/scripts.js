@@ -20,20 +20,20 @@ let user;
 
 // Selectors ///////////////////////////////////////////////////////////////////
 
-const availableRoomsSection = dom.select('.js-available-rooms-section');
-const currentSection = dom.select('.js-current-bookings');
-const customerDashboard = dom.select('.js-customer-dashboard');
-const defaultDate = dom.select('input[type="date"]');
-const dateSelector = dom.select('.js-date-selector');
-const heading = dom.select('.js-heading');
-const loginErrorMessage = dom.select('.js-login-error-message');
-const loginForm = dom.select('.js-login-form');
-const loginPage = dom.select('.js-login-page');
-const passwordField = dom.select('.js-password-field');
-const pastSection = dom.select('.js-past-bookings');
-const tagsSection = dom.select('.js-tags-section');
-const totalSpent = dom.select('.js-total-spent');
-const usernameField = dom.select('.js-username-field');
+const availableRoomsSection = document.querySelector('.js-available-rooms-section');
+const currentSection = document.querySelector('.js-current-bookings');
+const customerDashboard = document.querySelector('.js-customer-dashboard');
+const defaultDate = document.querySelector('input[type="date"]');
+const dateSelector = document.querySelector('.js-date-selector');
+const heading = document.querySelector('.js-heading');
+const loginErrorMessage = document.querySelector('.js-login-error-message');
+const loginForm = document.querySelector('.js-login-form');
+const loginPage = document.querySelector('.js-login-page');
+const passwordField = document.querySelector('.js-password-field');
+const pastSection = document.querySelector('.js-past-bookings');
+const tagsSection = document.querySelector('.js-tags-section');
+const totalSpent = document.querySelector('.js-total-spent');
+const usernameField = document.querySelector('.js-username-field');
 
 // On Load /////////////////////////////////////////////////////////////////////
 
