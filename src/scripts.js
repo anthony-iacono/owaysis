@@ -81,12 +81,13 @@ const goToCustomerDashboard = () => {
   hotel.getAvailableRooms(dateSelector.value);
   dom.fillRooms(hotel.availableRooms, roomsSection);
   hotel.getAvailableTypes();
-  dom.fillTypes(hotel.availableTypes, typesSection);
+  dom.fillTypes(hotel.types, typesSection);
   dom.fillBookings(user, hotel.rooms, currentSection, pastSection);
 }
 
 const displayRooms = () => {
   hotel.getAvailableRooms(dateSelector.value);
+  console.log('hotel.availableRooms: ', hotel.availableRooms);
   hotel.getFilteredRooms();
   dom.fillRooms(hotel.filteredRooms, roomsSection);
 }

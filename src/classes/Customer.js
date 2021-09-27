@@ -10,14 +10,14 @@ class Customer extends User {
     this.rooms = [];
   }
 
-  getCustomerData(bookings, rooms) {
-    this.getBookings(bookings, rooms);
+  getCustomerData(allBookings, allRooms) {
+    this.getBookings(allBookings, allRooms);
     this.getTotalSpent();
   }
 
-  getBookings(bookings, rooms) {
-    this.bookings = bookings.filter(booking => {
-      this.getRooms(booking, rooms);
+  getBookings(allBookings, allRooms) {
+    this.bookings = allBookings.filter(booking => {
+      this.getRooms(booking, allRooms);
       return booking.userID === this.id;
     });
   }

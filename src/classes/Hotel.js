@@ -4,7 +4,7 @@ class Hotel {
     this.rooms = rooms;
     this.bookings = bookings;
     this.availableRooms;
-    this.availableTypes;
+    this.types;
     this.selectedTypes = [];
     this.filteredRooms;
   }
@@ -23,7 +23,7 @@ class Hotel {
   }
 
   getAvailableTypes() {
-    this.availableTypes = this.availableRooms.reduce((acc, room) => {
+    this.types = this.availableRooms.reduce((acc, room) => {
       if (!acc.includes(room.roomType)) {
         acc.push(room.roomType);
       }
@@ -33,6 +33,10 @@ class Hotel {
   }
 
   getFilteredRooms() {
+    if (!this.selectedTypes.length) {
+      return this.filteredRooms = this.availableRooms;
+    }
+
     this.filteredRooms = this.availableRooms.filter(availableRoom => {
       return this.selectedTypes.includes(availableRoom.roomType);
     })
