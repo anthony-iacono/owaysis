@@ -91,7 +91,8 @@ const goToCustomerDashboard = () => {
 
 const displayAvailableRooms = () => {
   top.hotel.getAvailableRooms(top.dateSelector.value);
-  dom.fillAvailableRooms(top.hotel.availableRooms, top.availableRoomsSection);
+  top.hotel.getFilteredRooms();
+  dom.fillAvailableRooms(top.hotel.filteredRooms, top.availableRoomsSection);
 }
 
 const displayFilteredRooms = () => {
@@ -99,11 +100,13 @@ const displayFilteredRooms = () => {
   if (checkbox.checked) {
     top.hotel.addType(checkbox.value);
   } else if (!checkbox.checked) {
-    console.log('unchecked!');
     top.hotel.removeType(checkbox.value);
   }
   top.hotel.getFilteredRooms();
-  console.log(top.hotel.filteredRooms);
+  if (!top.hotel.filteredRooms.length) {
+    return dom.fillAvailableRooms(top.hotel.availableRooms, top.availableRoomsSection);
+  }
+
   dom.fillAvailableRooms(top.hotel.filteredRooms, top.availableRoomsSection);
 }
 

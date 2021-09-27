@@ -30,7 +30,6 @@ class Hotel {
 
       return acc;
     }, []);
-    console.log(this.availableTypes);
   }
 
   getFilteredRooms() {
