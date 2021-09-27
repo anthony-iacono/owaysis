@@ -89,9 +89,26 @@ const goToCustomerDashboard = () => {
   dom.fillBookings(top.user, top.hotel.rooms, top.currentSection, top.pastSection);
 }
 
-top.dateSelector.addEventListener('change', function() {
+const displayAvailableRooms = () => {
   top.hotel.getAvailableRooms(top.dateSelector.value);
   dom.fillAvailableRooms(top.hotel.availableRooms, top.availableRoomsSection);
-});
+}
+
+const displayFilteredRooms = () => {
+  const checkbox = event.target;
+  if (checkbox.checked) {
+    top.hotel.addType(checkbox.value);
+  } else if (!checkbox.checked) {
+    console.log('unchecked!');
+    top.hotel.removeType(checkbox.value);
+  }
+  top.hotel.getFilteredRooms();
+  console.log(top.hotel.filteredRooms);
+  dom.fillAvailableRooms(top.hotel.filteredRooms, top.availableRoomsSection);
+}
+
+top.dateSelector.addEventListener('change', displayAvailableRooms);
 
 top.loginForm.addEventListener('submit', logIn);
+
+top.tagsSection.addEventListener('change', displayFilteredRooms);

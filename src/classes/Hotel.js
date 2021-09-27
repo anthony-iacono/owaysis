@@ -5,7 +5,7 @@ class Hotel {
     this.bookings = bookings;
     this.availableRooms;
     this.availableTypes;
-    this.selectedTags;
+    this.selectedTypes = [];
     this.filteredRooms;
   }
 
@@ -35,7 +35,17 @@ class Hotel {
 
   getFilteredRooms() {
     this.filteredRooms = this.availableRooms.filter(availableRoom => {
-      return this.selectedTags.includes(availableRoom.roomType);
+      return this.selectedTypes.includes(availableRoom.roomType);
+    })
+  }
+
+  addType(type) {
+    this.selectedTypes.push(type);
+  }
+
+  removeType(type) {
+    this.selectedTypes = this.selectedTypes.filter(selectedType => {
+      return selectedType !== type;
     })
   }
 }
