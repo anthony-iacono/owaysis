@@ -82,7 +82,12 @@ const goToCustomerDashboard = () => {
   top.defaultDate.value = getTodaysDate();
   top.dateSelector.setAttribute('min', getTodaysDate());
   setMaxDate();
+  top.hotel.getRoomsByDate(top.dateSelector.value);
   dom.fillBookings(top.user, top.hotel.rooms, top.currentSection, top.pastSection);
 }
+
+top.dateSelector.addEventListener('change', function() {
+  top.hotel.getRoomsByDate(top.dateSelector.value);
+});
 
 top.loginForm.addEventListener('submit', logIn);
