@@ -11,10 +11,7 @@ import Hotel from './classes/Hotel';
 
 // Variables ////////////////////////////////////////////////////////////
 
-let hotel;
-let user;
-
-const availableRoomsSection = document.querySelector('.js-available-rooms-section');
+const availableRoomsSection = document.querySelector('.js-rooms-section');
 const currentSection = document.querySelector('.js-current-bookings');
 const customerDashboard = document.querySelector('.js-customer-dashboard');
 const defaultDate = document.querySelector('input[type="date"]');
@@ -26,16 +23,17 @@ const loginPage = document.querySelector('.js-login-page');
 const passwordField = document.querySelector('.js-password-field');
 const pastSection = document.querySelector('.js-past-bookings');
 const tagsSection = document.querySelector('.js-tags-section');
-const totalSpent = document.querySelector('.js-total-spent');
+const totalSpentBox = document.querySelector('.js-total-spent');
 const usernameField = document.querySelector('.js-username-field');
+
+let hotel;
+let user;
 
 // On Load /////////////////////////////////////////////////////////////////////
 
 const loadData = () => {
   Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings()])
-    .then(data => {
-      hotel = new Hotel(data[0], data[1], data[2]);
-    });
+    .then(data => hotel = new Hotel(data[0], data[1], data[2]));
 }
 
 window.onload = loadData();
@@ -66,38 +64,32 @@ const getTodaysDate = () => {
   return dateLocal.toISOString().slice(0, 10);
 }
 
-const setMaxDate = () => {
+const setDate = () => {
   const nextYear = parseInt(getTodaysDate().substring(0, 4)) + 1;
-  const maxDate = nextYear + getTodaysDate().slice(4);
-  dateSelector.setAttribute('max', maxDate);
+  defaultDate.value = getTodaysDate();
+  dateSelector.setAttribute('min', getTodaysDate());
+  dateSelector.setAttribute('max', nextYear + getTodaysDate().slice(4));
 }
 
 const goToCustomerDashboard = () => {
-  // dom.clearDashboard();
   user.getCustomerData(hotel.bookings, hotel.rooms);
   dom.show(customerDashboard);
   dom.hide(loginPage);
   heading.innerText = 'Customer Dashboard';
-  dom.fillTotalSpent(user, totalSpent);
-  defaultDate.value = getTodaysDate();
-  dateSelector.setAttribute('min', getTodaysDate());
-  setMaxDate();
+  dom.fillTotalSpent(user, totalSpentBox);
+  setDate();
   hotel.getAvailableRooms(dateSelector.value);
-  dom.fillAvailableRooms(hotel.availableRooms, availableRoomsSection);
+  dom.fillRooms(hotel.availableRooms, availableRoomsSection);
   hotel.getAvailableTypes();
-  dom.fillAvailableTypes(hotel.availableTypes, tagsSection);
+  dom.fillTypes(hotel.availableTypes, tagsSection);
   dom.fillBookings(user, hotel.rooms, currentSection, pastSection);
 }
 
 const displayAvailableRooms = () => {
   hotel.getAvailableRooms(dateSelector.value);
   hotel.getFilteredRooms();
-  dom.fillAvailableRooms(hotel.filteredRooms, availableRoomsSection);
+  dom.fillRooms(hotel.filteredRooms, availableRoomsSection);
 }
-
-// const updateDashboard() {
-//
-// }
 
 const displayBookingConfirmation = () => {
   if (window.confirm('Make this booking?')) {
@@ -105,7 +97,6 @@ const displayBookingConfirmation = () => {
     const roomNumber = parseInt(event.target.parentNode.id);
     api.addBooking(user.id, date, roomNumber)
       .then(() => {
-        console.log(user);
         goToCustomerDashboard();
       });
   }
@@ -120,10 +111,10 @@ const displayFilteredRooms = () => {
   }
   hotel.getFilteredRooms();
   if (!hotel.filteredRooms.length) {
-    return dom.fillAvailableRooms(hotel.availableRooms, availableRoomsSection);
+    return dom.fillRooms(hotel.availableRooms, availableRoomsSection);
   }
 
-  dom.fillAvailableRooms(hotel.filteredRooms, availableRoomsSection);
+  dom.fillRooms(hotel.filteredRooms, availableRoomsSection);
 }
 
 dateSelector.addEventListener('change', displayAvailableRooms);

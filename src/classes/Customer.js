@@ -18,7 +18,7 @@ class Customer extends User {
   getBookings(bookings, rooms) {
     this.bookings = bookings.filter(booking => {
       this.getRooms(booking, rooms);
-      return booking.userID === this.id
+      return booking.userID === this.id;
     });
   }
 

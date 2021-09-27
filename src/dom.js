@@ -1,6 +1,6 @@
 const dom = {
 
-  fillAvailableRooms(availableRooms, section) {
+  fillRooms(availableRooms, section) {
     section.innerHTML = '';
     availableRooms.forEach(availableRoom => {
       section.innerHTML += `
@@ -38,7 +38,7 @@ const dom = {
     })
   },
 
-  fillAvailableTypes(availableTypes, section) {
+  fillTypes(availableTypes, section) {
     section.innerHTML = '';
     availableTypes.forEach(availableType => {
       section.innerHTML += `
@@ -56,7 +56,7 @@ const dom = {
   hide(...elements) {
     elements.forEach(element => element.classList.add('hidden'));
   },
-  
+
   show(...elements) {
     elements.forEach(element => element.classList.remove('hidden'));
   },
