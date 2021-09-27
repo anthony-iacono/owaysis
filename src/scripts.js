@@ -11,7 +11,7 @@ import Hotel from './classes/Hotel';
 
 // Variables ////////////////////////////////////////////////////////////
 
-const availableRoomsSection = document.querySelector('.js-rooms-section');
+const roomsSection = document.querySelector('.js-rooms-section');
 const currentSection = document.querySelector('.js-current-bookings');
 const customerDashboard = document.querySelector('.js-customer-dashboard');
 const defaultDate = document.querySelector('input[type="date"]');
@@ -22,7 +22,7 @@ const loginForm = document.querySelector('.js-login-form');
 const loginPage = document.querySelector('.js-login-page');
 const passwordField = document.querySelector('.js-password-field');
 const pastSection = document.querySelector('.js-past-bookings');
-const tagsSection = document.querySelector('.js-tags-section');
+const typesSection = document.querySelector('.js-tags-section');
 const totalSpentBox = document.querySelector('.js-total-spent');
 const usernameField = document.querySelector('.js-username-field');
 
@@ -79,16 +79,16 @@ const goToCustomerDashboard = () => {
   dom.fillTotalSpent(user, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);
-  dom.fillRooms(hotel.availableRooms, availableRoomsSection);
+  dom.fillRooms(hotel.availableRooms, roomsSection);
   hotel.getAvailableTypes();
-  dom.fillTypes(hotel.availableTypes, tagsSection);
+  dom.fillTypes(hotel.availableTypes, typesSection);
   dom.fillBookings(user, hotel.rooms, currentSection, pastSection);
 }
 
-const displayAvailableRooms = () => {
+const displayRooms = () => {
   hotel.getAvailableRooms(dateSelector.value);
   hotel.getFilteredRooms();
-  dom.fillRooms(hotel.filteredRooms, availableRoomsSection);
+  dom.fillRooms(hotel.filteredRooms, roomsSection);
 }
 
 const displayBookingConfirmation = () => {
@@ -111,16 +111,16 @@ const displayFilteredRooms = () => {
   }
   hotel.getFilteredRooms();
   if (!hotel.filteredRooms.length) {
-    return dom.fillRooms(hotel.availableRooms, availableRoomsSection);
+    return dom.fillRooms(hotel.availableRooms, roomsSection);
   }
 
-  dom.fillRooms(hotel.filteredRooms, availableRoomsSection);
+  dom.fillRooms(hotel.filteredRooms, roomsSection);
 }
 
-dateSelector.addEventListener('change', displayAvailableRooms);
+dateSelector.addEventListener('change', displayRooms);
 
 loginForm.addEventListener('submit', logIn);
 
-tagsSection.addEventListener('change', displayFilteredRooms);
+typesSection.addEventListener('change', displayFilteredRooms);
 
-availableRoomsSection.addEventListener('click', displayBookingConfirmation);
+roomsSection.addEventListener('click', displayBookingConfirmation);
