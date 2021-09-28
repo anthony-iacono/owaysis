@@ -87,7 +87,6 @@ const goToCustomerDashboard = () => {
 
 const displayRooms = () => {
   hotel.getAvailableRooms(dateSelector.value);
-  console.log('hotel.availableRooms: ', hotel.availableRooms);
   hotel.getFilteredRooms();
   dom.fillRooms(hotel.filteredRooms, roomsSection);
 }
@@ -97,10 +96,13 @@ const displayBookingConfirmation = () => {
     const date = dateSelector.value.replace(/-/g, '\/');
     const roomNumber = parseInt(event.target.parentNode.id);
     api.addBooking(user.id, date, roomNumber)
-      .then(() => {
-        goToCustomerDashboard();
-      });
+      .then(() => loadData())
+      .then(() => goToCustomerDashboard());
   }
+
+  // setTimeout(goToCustomerDashboard, 1000);
+
+  // window.alert('Select \'OK\' to return to dashboard');
 }
 
 const displayFilteredRooms = () => {

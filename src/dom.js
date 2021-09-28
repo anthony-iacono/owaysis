@@ -16,8 +16,9 @@ const dom = {
   },
 
   fillBookings(user, rooms, currentSection, pastSection) {
-    // currentSection.innerHTML = '';
-    // pastSection.innerHTML = '';
+    currentSection.innerHTML = '';
+    pastSection.innerHTML = '';
+    console.log('user.bookings: ', user.bookings);
     user.bookings.forEach(booking => {
       const room = user.rooms.find(room => room.number === booking.roomNumber);
       let section = pastSection;
@@ -27,6 +28,7 @@ const dom = {
 
       section.innerHTML += `
       <article id="${booking.id}">
+        <p>BookingID: ${booking.id}</p>
         <p>Date: ${booking.date}</p>
         <p>Type: ${room.roomType}</p>
         <p>Bidet: ${room.bidet}</p>
