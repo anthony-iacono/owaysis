@@ -83,7 +83,12 @@ const goToCustomerDashboard = () => {
   dom.fillTotalSpent(user, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);
-  dom.fillRooms(hotel.availableRooms, roomsSection);
+  if (!hotel.availableRooms.length) {
+    dom.displayApology(roomsSection);
+  } else {
+    dom.fillRooms(hotel.availableRooms, roomsSection);
+  }
+  
   hotel.getAvailableTypes();
   dom.fillTypes(hotel.types, typesSection);
   dom.fillBookings(user, hotel.rooms, dateSelector.value, currentSection, pastSection);
@@ -92,6 +97,10 @@ const goToCustomerDashboard = () => {
 const displayRooms = () => {
   hotel.getAvailableRooms(dateSelector.value);
   hotel.getFilteredRooms();
+  if (!hotel.availableRooms.length) {
+    return dom.displayApology(roomsSection);
+  }
+
   dom.fillRooms(hotel.filteredRooms, roomsSection);
 }
 

@@ -1,5 +1,11 @@
 const dom = {
 
+  displayApology(section) {
+    section.innerHTML = `
+      <p>Sorry, but there are no rooms available on this date. Please try another date.</p>
+    `;
+  },
+
   fillRooms(availableRooms, section) {
     section.innerHTML = '';
     availableRooms.forEach(availableRoom => {
