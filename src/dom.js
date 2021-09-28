@@ -15,14 +15,13 @@ const dom = {
     })
   },
 
-  fillBookings(user, rooms, currentSection, pastSection) {
+  fillBookings(user, rooms, selectedDate, currentSection, pastSection) {
     currentSection.innerHTML = '';
     pastSection.innerHTML = '';
-    console.log('user.bookings: ', user.bookings);
     user.bookings.forEach(booking => {
       const room = user.rooms.find(room => room.number === booking.roomNumber);
       let section = pastSection;
-      if (Date.parse(booking.date) > Date.now()) {
+      if (Date.parse(booking.date) >= Date.parse(selectedDate)) {
         section = currentSection;
       }
 

@@ -1,4 +1,4 @@
-// Imports /////////////////////////////////////////////////////////////////
+// Imports /////////////////////////////////////////////////////////////////////
 
 import './css/base.scss';
 import './images/turing-logo.png'
@@ -9,7 +9,7 @@ import api from './api';
 import Customer from './classes/Customer';
 import Hotel from './classes/Hotel';
 
-// Variables ////////////////////////////////////////////////////////////
+// Variables ///////////////////////////////////////////////////////////////////
 
 const roomsSection = document.querySelector('.js-rooms-section');
 const currentSection = document.querySelector('.js-current-bookings');
@@ -32,7 +32,7 @@ let user;
 // On Load /////////////////////////////////////////////////////////////////////
 
 const loadData = () => {
-  Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings()])
+  return Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings()])
     .then(data => hotel = new Hotel(data[0], data[1], data[2]));
 }
 
@@ -60,8 +60,12 @@ const logIn = () => {
 
 const getTodaysDate = () => {
   const dateUTC = new Date();
-  const dateLocal = new Date(dateUTC.getTime() - dateUTC.getTimezoneOffset() * 60 * 1000);
+  const dateLocal = convertToLocal(dateUTC);
   return dateLocal.toISOString().slice(0, 10);
+}
+
+const convertToLocal = (date) => {
+ return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 }
 
 const setDate = () => {
@@ -82,7 +86,7 @@ const goToCustomerDashboard = () => {
   dom.fillRooms(hotel.availableRooms, roomsSection);
   hotel.getAvailableTypes();
   dom.fillTypes(hotel.types, typesSection);
-  dom.fillBookings(user, hotel.rooms, currentSection, pastSection);
+  dom.fillBookings(user, hotel.rooms, dateSelector.value, currentSection, pastSection);
 }
 
 const displayRooms = () => {
@@ -99,10 +103,6 @@ const displayBookingConfirmation = () => {
       .then(() => loadData())
       .then(() => goToCustomerDashboard());
   }
-
-  // setTimeout(goToCustomerDashboard, 1000);
-
-  // window.alert('Select \'OK\' to return to dashboard');
 }
 
 const displayFilteredRooms = () => {
