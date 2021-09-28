@@ -9,7 +9,8 @@
 }
 
 body {
-  background: $primary-background;
+  background-image: $primary-background-image;
+  background-size: cover;
 }
 
 .customer-dashboard {
