@@ -111,10 +111,11 @@ function getTodaysDate() {
 
 function logIn() {
   event.preventDefault();
-  const usernameIsValid = username.value.slice(0, 8) === 'customer';
-  const passwordIsValid = password.value === 'overlook2021';
-  // const passwordIsValid = true;
-  // const usernameIsValid = true;
+  // const usernameIsValid = username.value.slice(0, 8) === 'customer';
+  // const passwordIsValid = password.value === 'overlook2021';
+  username.value = 'customer2';
+  const passwordIsValid = true;
+  const usernameIsValid = true;
   const userID = parseInt(username.value.slice(8));
   const customer = hotel.customers.find(customer => customer.id === userID)
   if (customer && usernameIsValid && passwordIsValid) {
