@@ -4,51 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
     <title>Oasys</title>
   </head>
   <body>
     <header class="header">
       <span class="logo">Oasys</span>
     </header>
-    <main>
-      <h1 class="heading js-heading">Login</h1>
-      <section class="login-page js-login-page">
-        <form class="login-form js-login-form">
-          <label for="username-field">Username</label>
+    <main class="main">
+      <form class="login-form js-login-form">
+        <div class="login-field">
+          <label for="username-box">Username</label>
           <input class="js-username-field" id="username-field" type="text" name="username">
+        </div>
+        <div class="login-field">
           <label for="password-field">Password</label>
           <input class="js-password-field" id="password-field" type="text" name="password">
+        </div>
+        <div class="login-field">
           <input type="submit">
-          <p class="js-login-error-message"></p>
-        </form>
-      </section>
-      <section class="customer-dashboard js-customer-dashboard hidden">
-        <section class="dashboard-section">
-          <h2>Total Spent</h2>
-          <p class="js-total-spent"></p>
-        </section>
-        <section class="dashboard-section">
-          <h2>New Booking</h2>
-          <form class="js-new-booking-form">
-            <section class="js-tags-section">
+        </div>
+        <p class="js-login-error-message hidden"></p>
+      </form>
+      <div class="dashboard-container">
+        <h1 class="heading hidden js-heading">Login</h1>
+        <section class="customer-dashboard js-customer-dashboard hidden">
+          <section class="dashboard-section">
+            <h2 class="dashboard-section-header">Total Spent</h2>
+            <p class="js-total-spent"></p>
+          </section>
+          <section class="dashboard-section">
+            <h2 class="dashboard-section-header">New Booking</h2>
+            <form class="new-booking-form js-new-booking-form">
+              <label for="booking-date">Date:
+                <input class="js-date-selector" type="date" id="booking-date" name="booking-date">
+              </label>
+              <section class="types-section js-types-section">
+              </section>
+            </form>
+            <section class="js-rooms-section">
             </section>
-            <label for="booking-date">Date:</label>
-            <input class="js-date-selector" type="date" id="booking-date" name="booking-date">
-          </form>
-          <section class="js-rooms-section">
+          </section>
+          <section class="dashboard-section">
+            <h2 class="dashboard-section-header">Current</h2>
+            <div class="js-current-bookings">
+            </div>
+          </section>
+          <section class="dashboard-section">
+            <h2 class="dashboard-section-header">Past</h2>
+            <div class="js-past-bookings">
+            </div>
           </section>
         </section>
-        <section class="dashboard-section">
-          <h2>Current</h2>
-          <div class="js-current-bookings">
-          </div>
-        </section>
-        <section class="dashboard-section">
-          <h2>Past</h2>
-          <div class="js-past-bookings">
-          </div>
-        </section>
-      </section>
+      </div>
     </main>
     <script src="bundle.js"></script>
   </body>

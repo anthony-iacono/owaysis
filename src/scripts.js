@@ -17,12 +17,11 @@ const defaultDate = document.querySelector('input[type="date"]');
 const heading = document.querySelector('.js-heading');
 const loginErrorMessage = document.querySelector('.js-login-error-message');
 const loginForm = document.querySelector('.js-login-form');
-const loginPage = document.querySelector('.js-login-page');
 const passwordField = document.querySelector('.js-password-field');
 const pastSection = document.querySelector('.js-past-bookings');
 const roomsSection = document.querySelector('.js-rooms-section');
 const totalSpentBox = document.querySelector('.js-total-spent');
-const typesSection = document.querySelector('.js-tags-section');
+const typesSection = document.querySelector('.js-types-section');
 const usernameField = document.querySelector('.js-username-field');
 
 let hotel;
@@ -62,9 +61,9 @@ function confirmBooking() {
 
 function displayCustomerDashboard() {
   user.getCustomerData(hotel.bookings, hotel.rooms);
-  dom.show(customerDashboard);
-  dom.hide(loginPage);
-  heading.innerText = 'Customer Dashboard';
+  dom.show(customerDashboard, heading);
+  dom.hide(loginForm);
+  dom.fillHeading('Customer Dashboard', heading);
   dom.fillTotalSpent(user, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);

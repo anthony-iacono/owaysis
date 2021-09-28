@@ -6,11 +6,15 @@ const dom = {
     `;
   },
 
+  fillHeading(text, heading) {
+    heading.innerText = `${text}`;
+  },
+
   fillRooms(availableRooms, section) {
     section.innerHTML = '';
     availableRooms.forEach(availableRoom => {
       section.innerHTML += `
-        <article class="js-room-card" id='${availableRoom.number}'>
+        <article class="room-card js-room-card" id='${availableRoom.number}'>
           <p>Type: ${availableRoom.roomType}</p>
           <p>Bidet: ${availableRoom.bidet}</p>
           <p>Bed Size: ${availableRoom.bedSize}</p>
@@ -32,7 +36,7 @@ const dom = {
       }
 
       section.innerHTML += `
-      <article id="${booking.id}">
+      <article class="booking-card" id="${booking.id}">
         <p>BookingID: ${booking.id}</p>
         <p>Date: ${booking.date}</p>
         <p>Type: ${room.roomType}</p>
@@ -54,7 +58,7 @@ const dom = {
     availableTypes.forEach(availableType => {
       section.innerHTML += `
       <label>
-      <input type="checkbox" value="${availableType}">${availableType}
+      <input type="checkbox" value="${availableType}"> ${availableType}
       </label>
       `
     })
