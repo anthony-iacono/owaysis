@@ -1,29 +1,28 @@
 // Imports /////////////////////////////////////////////////////////////////////
 
 import './css/base.scss';
-import './images/turing-logo.png'
 
-import dom from './dom';
 import api from './api';
+import dom from './dom';
 
 import Customer from './classes/Customer';
 import Hotel from './classes/Hotel';
 
 // Variables ///////////////////////////////////////////////////////////////////
 
-const roomsSection = document.querySelector('.js-rooms-section');
 const currentSection = document.querySelector('.js-current-bookings');
 const customerDashboard = document.querySelector('.js-customer-dashboard');
-const defaultDate = document.querySelector('input[type="date"]');
 const dateSelector = document.querySelector('.js-date-selector');
+const defaultDate = document.querySelector('input[type="date"]');
 const heading = document.querySelector('.js-heading');
 const loginErrorMessage = document.querySelector('.js-login-error-message');
 const loginForm = document.querySelector('.js-login-form');
 const loginPage = document.querySelector('.js-login-page');
 const passwordField = document.querySelector('.js-password-field');
 const pastSection = document.querySelector('.js-past-bookings');
-const typesSection = document.querySelector('.js-tags-section');
+const roomsSection = document.querySelector('.js-rooms-section');
 const totalSpentBox = document.querySelector('.js-total-spent');
+const typesSection = document.querySelector('.js-tags-section');
 const usernameField = document.querySelector('.js-username-field');
 
 let hotel;
@@ -38,43 +37,30 @@ const loadData = () => {
 
 window.onload = loadData();
 
+// Event Listeners /////////////////////////////////////////////////////////////
+
+dateSelector.addEventListener('change', displayRooms);
+loginForm.addEventListener('submit', logIn);
+roomsSection.addEventListener('click', confirmBooking);
+typesSection.addEventListener('change', displayFilteredRooms);
+
 // Functions ///////////////////////////////////////////////////////////////////
 
-const logIn = () => {
-  event.preventDefault();
-  const username = usernameField.value;
-  const passwordIsValid = passwordField.value === 'overlook2021';
-  const usernameIsValid = username.slice(0, 8) === 'customer';
-  const userID = parseInt(username.slice(8));
-  const customer = hotel.customers.find(customer => customer.id === userID)
-  if (customer && usernameIsValid && passwordIsValid) {
-    user = new Customer(username, customer.id, customer.name)
-    goToCustomerDashboard();
-  } else if (username === 'manager' && passwordIsValid) {
-    user = new Manager(username);
-  } else {
-    loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
-  }
-}
-
-const getTodaysDate = () => {
-  const dateUTC = new Date();
-  const dateLocal = convertToLocal(dateUTC);
-  return dateLocal.toISOString().slice(0, 10);
-}
-
-const convertToLocal = (date) => {
+function convertToLocal(date) {
  return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 }
 
-const setDate = () => {
-  const nextYear = parseInt(getTodaysDate().substring(0, 4)) + 1;
-  defaultDate.value = getTodaysDate();
-  dateSelector.setAttribute('min', getTodaysDate());
-  dateSelector.setAttribute('max', nextYear + getTodaysDate().slice(4));
+function confirmBooking() {
+  if (window.confirm('Make this booking?')) {
+    const date = dateSelector.value.replace(/-/g, '\/');
+    const roomNumber = parseInt(event.target.parentNode.id);
+    api.addBooking(user.id, date, roomNumber)
+      .then(() => loadData())
+      .then(() => displayCustomerDashboard());
+  }
 }
 
-const goToCustomerDashboard = () => {
+function displayCustomerDashboard() {
   user.getCustomerData(hotel.bookings, hotel.rooms);
   dom.show(customerDashboard);
   dom.hide(loginPage);
@@ -93,27 +79,7 @@ const goToCustomerDashboard = () => {
   dom.fillBookings(user, hotel.rooms, dateSelector.value, currentSection, pastSection);
 }
 
-const displayRooms = () => {
-  hotel.getAvailableRooms(dateSelector.value);
-  hotel.getFilteredRooms();
-  if (!hotel.availableRooms.length) {
-    return dom.displayApology(roomsSection);
-  }
-
-  dom.fillRooms(hotel.filteredRooms, roomsSection);
-}
-
-const displayBookingConfirmation = () => {
-  if (window.confirm('Make this booking?')) {
-    const date = dateSelector.value.replace(/-/g, '\/');
-    const roomNumber = parseInt(event.target.parentNode.id);
-    api.addBooking(user.id, date, roomNumber)
-      .then(() => loadData())
-      .then(() => goToCustomerDashboard());
-  }
-}
-
-const displayFilteredRooms = () => {
+function displayFilteredRooms() {
   const checkbox = event.target;
   if (checkbox.checked) {
     hotel.addType(checkbox.value);
@@ -128,10 +94,42 @@ const displayFilteredRooms = () => {
   dom.fillRooms(hotel.filteredRooms, roomsSection);
 }
 
-dateSelector.addEventListener('change', displayRooms);
+function displayRooms() {
+  hotel.getAvailableRooms(dateSelector.value);
+  hotel.getFilteredRooms();
+  if (!hotel.availableRooms.length) {
+    return dom.displayApology(roomsSection);
+  }
 
-loginForm.addEventListener('submit', logIn);
+  dom.fillRooms(hotel.filteredRooms, roomsSection);
+}
 
-typesSection.addEventListener('change', displayFilteredRooms);
+function getTodaysDate() {
+  const dateUTC = new Date();
+  const dateLocal = convertToLocal(dateUTC);
+  return dateLocal.toISOString().slice(0, 10);
+}
 
-roomsSection.addEventListener('click', displayBookingConfirmation);
+function logIn() {
+  event.preventDefault();
+  const username = usernameField.value;
+  const passwordIsValid = passwordField.value === 'overlook2021';
+  const usernameIsValid = username.slice(0, 8) === 'customer';
+  const userID = parseInt(username.slice(8));
+  const customer = hotel.customers.find(customer => customer.id === userID)
+  if (customer && usernameIsValid && passwordIsValid) {
+    user = new Customer(username, customer.id, customer.name)
+    displayCustomerDashboard();
+  } else if (username === 'manager' && passwordIsValid) {
+    user = new Manager(username);
+  } else {
+    loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
+  }
+}
+
+function setDate() {
+  const nextYear = parseInt(getTodaysDate().substring(0, 4)) + 1;
+  defaultDate.value = getTodaysDate();
+  dateSelector.setAttribute('min', getTodaysDate());
+  dateSelector.setAttribute('max', nextYear + getTodaysDate().slice(4));
+}

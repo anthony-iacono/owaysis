@@ -45,19 +45,19 @@ const dom = {
     })
   },
 
+  fillTotalSpent(user, element) {
+    element.innerText = `$${user.totalSpent}`;
+  },
+
   fillTypes(availableTypes, section) {
     section.innerHTML = '';
     availableTypes.forEach(availableType => {
       section.innerHTML += `
-        <label>
-        <input type="checkbox" value="${availableType}">${availableType}
-        </label>
+      <label>
+      <input type="checkbox" value="${availableType}">${availableType}
+      </label>
       `
     })
-  },
-
-  fillTotalSpent(user, element) {
-    element.innerText = `$${user.totalSpent}`;
   },
 
   hide(...elements) {
@@ -66,7 +66,7 @@ const dom = {
 
   show(...elements) {
     elements.forEach(element => element.classList.remove('hidden'));
-  },
+  }
 }
 
 export default dom;
