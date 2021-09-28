@@ -10,32 +10,30 @@
     <title>Oasys</title>
   </head>
   <body>
-    <header class="header">
-      <span class="logo">Oasys</span>
+    <header>
+      <span>Oasys</span>
     </header>
-    <main class="main">
+    <main>
       <form class="login-form js-login-form">
         <input class="js-username" aria-label="username" type="text" placeholder="Username">
         <input class="js-password" aria-label="password" type="password" name="password" placeholder="Password">
         <input class="login-button" type="submit">
-        <article class="login-error-box js-login-error-box hidden">
-          <p class="login-error-message">Sorry, the username or password you entered is not recognized.</p>
-          <p class="login-error-message">Please try again.</p>
+        <article class="login-error-box hidden js-login-error-box">
+          <p>Sorry, the username or password you entered is not recognized.</p>
+          <p>Please try again.</p>
         </article>
       </form>
       <div class="dashboard-container">
-        <h1 class="heading hidden js-heading">Login</h1>
+        <h1 class="main-heading hidden js-heading">Login</h1>
         <section class="customer-dashboard js-customer-dashboard hidden">
           <section>
-            <h2 class="dashboard-section-heading total-spent-heading">Total Spent</h2>
+            <h2 class="section-heading total-spent-heading">Total Spent</h2>
             <p class="total-spent js-total-spent"></p>
           </section>
           <section>
-            <h2 class="dashboard-section-heading">New Booking</h2>
+            <h2 class="section-heading">New Booking</h2>
             <form class="new-booking-form js-new-booking-form">
-              <label for="booking-date">Date:
-                <input class="js-date-selector" type="date" id="booking-date" name="booking-date">
-              </label>
+              <input class="date-selector js-date-selector" type="date" aria-label="date">
               <section class="types-section js-types-section">
               </section>
             </form>
@@ -43,12 +41,12 @@
             </section>
           </section>
           <section>
-            <h2 class="dashboard-section-heading">Current</h2>
+            <h2 class="section-heading">Current</h2>
             <div class="js-current-bookings">
             </div>
           </section>
           <section>
-            <h2 class="dashboard-section-heading">Past</h2>
+            <h2 class="section-heading">Past</h2>
             <div class="js-past-bookings">
             </div>
           </section>

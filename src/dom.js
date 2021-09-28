@@ -58,7 +58,7 @@ const dom = {
     section.innerHTML = '';
     availableTypes.forEach(availableType => {
       section.innerHTML += `
-      <label>
+      <label class="type">
       <input type="checkbox" value="${availableType}"> ${availableType}
       </label>
       `

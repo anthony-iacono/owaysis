@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 
 .dashboard-container {
@@ -34,19 +35,24 @@ body {
   }
 }
 
-
-
-.dashboard-section-heading {
+.section-heading {
   padding: 10px;
 }
 
-.header {
+header {
   justify-self: flex-start;
   display: flex;
   justify-content: center;
+
+  span {
+    font-size: 72px;
+    color: white;
+    padding: 20px;
+    font-family: 'Cinzel Decorative', cursive;
+  }
 }
 
-.heading {
+.main-heading {
   text-align: center;
   padding-top: 10px;
 }
@@ -64,13 +70,11 @@ label {
 }
 
 .login-error-box {
-  text-align: center;
-  padding: 10px;
+  p {
+    padding: 5px;
+  }
 }
 
-.login-error-message {
-  padding: 5px;
-}
 
 .login-form {
   display: flex;
@@ -98,13 +102,11 @@ label {
   input {
     text-align: center;
   }
-}
 
-.logo {
-  font-size: 72px;
-  color: white;
-  padding: 20px;
-  font-family: 'Cinzel Decorative', cursive;
+  article {
+    text-align: center;
+    padding: 10px;
+  }
 }
 
 main {
@@ -120,14 +122,14 @@ main {
   background-color: $tan;
   margin: 10px;
   border-radius: 10px;
-  box-shadow: 3px 3px 3px rgb(0 0 0 / 0.8);
+  box-shadow: $shadow;
 }
 
 .booking-card {
   padding: 10px;
   background-color: $tan;
   margin: 10px;
-  box-shadow: 3px 3px 3px rgb(0 0 0 / 0.8);
+  box-shadow: $shadow;
 }
 
 .total-spent-heading,
@@ -136,16 +138,20 @@ main {
 }
 
 .new-booking-form {
-  padding: 10px;
+  padding: 10px, 10px, 0px, 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100px;
 }
 
-.types-section {
-  display: flex;
-  flex-direction: column;
+.date-selector {
+  text-align: center;
+  width: 200px;
+}
+
+.type {
+  display: block;
 }
 
 .hidden {
