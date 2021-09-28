@@ -1,6 +1,7 @@
 const dom = {
 
   displayApology(section) {
+    this.show(section);
     section.innerHTML = `
       <p>Sorry, but there are no rooms available on this date. Please try another date.</p>
     `;

@@ -50,10 +50,34 @@ body {
 
 .heading {
   text-align: center;
+  padding-top: 10px;
 }
 
 label {
   padding-bottom: 10px;
+}
+
+.login-button {
+  cursor: pointer;
+  margin: 20px;
+  background-color: rgba(#ccb081, 0.86);
+  color: white;
+  padding: 5px;
+  // border-radius: 5px;
+}
+
+::placeholder,
+input {
+  text-align: center;
+}
+
+.input-field:focus::placeholder {
+    color: white;
+}
+
+.login-error-box {
+  text-align: center;
+  padding: 10px;
 }
 
 .login-field {
@@ -69,7 +93,7 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: auto;
   width: 300px;
   background-color: rgba(#6f91b8, 0.80);
   color: white;
@@ -117,7 +141,6 @@ main {
 .types-section {
   display: flex;
   flex-direction: column;
-  
 }
 
 .hidden {

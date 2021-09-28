@@ -15,7 +15,7 @@ const customerDashboard = document.querySelector('.js-customer-dashboard');
 const dateSelector = document.querySelector('.js-date-selector');
 const defaultDate = document.querySelector('input[type="date"]');
 const heading = document.querySelector('.js-heading');
-const loginErrorMessage = document.querySelector('.js-login-error-message');
+const loginErrorBox = document.querySelector('.js-login-error-box');
 const loginForm = document.querySelector('.js-login-form');
 const passwordField = document.querySelector('.js-password-field');
 const pastSection = document.querySelector('.js-past-bookings');
@@ -111,21 +111,21 @@ function getTodaysDate() {
 
 function logIn() {
   event.preventDefault();
-  // const username = usernameField.value;
-  // const passwordIsValid = passwordField.value === 'overlook2021';
-  // const usernameIsValid = username.slice(0, 8) === 'customer';
-  const username = 'customer2';
-  const passwordIsValid = true;
-  const usernameIsValid = true;
+  const username = usernameField.value;
+  const passwordIsValid = passwordField.value === 'overlook2021';
+  const usernameIsValid = username.slice(0, 8) === 'customer' || username === 'manager';
+  // const username = 'customer2';
+  // const passwordIsValid = true;
+  // const usernameIsValid = true;
   const userID = parseInt(username.slice(8));
   const customer = hotel.customers.find(customer => customer.id === userID)
   if (customer && usernameIsValid && passwordIsValid) {
     user = new Customer(username, customer.id, customer.name)
     displayCustomerDashboard();
-  } else if (username === 'manager' && passwordIsValid) {
+  } else if (usernameIsValid && passwordIsValid) {
     user = new Manager(username);
   } else {
-    loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
+    dom.show(loginErrorBox);
   }
 }
 
