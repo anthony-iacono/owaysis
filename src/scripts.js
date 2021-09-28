@@ -42,13 +42,12 @@ window.onload = loadData();
 
 const logIn = () => {
   event.preventDefault();
-  // const username = usernameField.value;
-  // const passwordIsValid = passwordField.value === 'overlook2021';
-  const username = 'customer2';
-  const passwordIsValid = true;
+  const username = usernameField.value;
+  const passwordIsValid = passwordField.value === 'overlook2021';
+  const usernameIsValid = username.slice(0, 8) === 'customer';
   const userID = parseInt(username.slice(8));
   const customer = hotel.customers.find(customer => customer.id === userID)
-  if (customer && passwordIsValid) {
+  if (customer && usernameIsValid && passwordIsValid) {
     user = new Customer(username, customer.id, customer.name)
     goToCustomerDashboard();
   } else if (username === 'manager' && passwordIsValid) {
@@ -88,7 +87,7 @@ const goToCustomerDashboard = () => {
   } else {
     dom.fillRooms(hotel.availableRooms, roomsSection);
   }
-  
+
   hotel.getAvailableTypes();
   dom.fillTypes(hotel.types, typesSection);
   dom.fillBookings(user, hotel.rooms, dateSelector.value, currentSection, pastSection);
