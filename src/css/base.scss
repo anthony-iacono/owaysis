@@ -3,7 +3,6 @@
 
 * {
   box-sizing: border-box;
-  // border: 1px solid black;
   margin: 0;
   font-family: sans-serif;
 }
@@ -21,22 +20,21 @@ body {
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  background-color: rgba(#6f91b8, 0.80);
+  background-color: $blue;
   color: white;
 }
 
 .customer-dashboard {
   display: grid;
   grid-template-columns: 300px 300px 300px 300px;
-  // display: flex;
-  // justify-content: space-around;
-  // align-items: flex-start;
+
+  section {
+    min-width: 300px;
+    padding: 10px;
+  }
 }
 
-.dashboard-section {
-  min-width: 300px;
-  padding: 10px;
-}
+
 
 .dashboard-section-heading {
   padding: 10px;
@@ -65,15 +63,6 @@ label {
   margin: 10px;
 }
 
-::placeholder,
-input {
-  text-align: center;
-}
-
-.login-input:focus::placeholder {
-    color: white;
-}
-
 .login-error-box {
   text-align: center;
   padding: 10px;
@@ -92,14 +81,23 @@ input {
   height: auto;
   width: 300px;
   padding: 20px;
-  background-color: rgba(#6f91b8, 0.80);
+  background-color: $blue;
   color: white;
   font-size: 18px;
   border-radius: 10px;
-}
 
-.login-input {
-  margin: 10px;
+  input {
+    margin: 10px;
+  }
+
+  input:focus::placeholder {
+    color: white;
+  }
+
+  ::placeholder,
+  input {
+    text-align: center;
+  }
 }
 
 .logo {
@@ -119,7 +117,7 @@ main {
 
 .room-card {
   padding: 10px;
-  background-color: rgba(#ccb081, 0.86);
+  background-color: $tan;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 3px 3px 3px rgb(0 0 0 / 0.8);
@@ -127,7 +125,7 @@ main {
 
 .booking-card {
   padding: 10px;
-  background-color: rgba(#ccb081, 0.86);
+  background-color: $tan;
   margin: 10px;
   box-shadow: 3px 3px 3px rgb(0 0 0 / 0.8);
 }
