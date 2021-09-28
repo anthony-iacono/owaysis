@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oasys</title>
-</head>
-<body>
-  <header class="header">
-    <span class="logo">Oasys</span>
-  </header>
-  <main>
-    <h1 class="heading js-heading">Login</h1>
-    <section class="login-page js-login-page">
-      <form class="login-form js-login-form">
-        <label for="username-field">Username</label>
-        <input class="js-username-field" id="username-field" type="text" name="username">
-        <label for="password-field">Password</label>
-        <input class="js-password-field" id="password-field" type="text" name="password">
-        <input type="submit">
-        <p class="js-login-error-message"></p>
-      </form>
-    </section>
-    <section class="customer-dashboard js-customer-dashboard hidden">
-      <section class="dashboard-section">
-        <h2>Total Spent</h2>
-        <p class="js-total-spent"></p>
-      </section>
-      <section class="dashboard-section">
-        <h2>New Booking</h2>
-        <form class="js-new-booking-form">
-          <label for="booking-date">Date:</label>
-          <input class="js-date-selector" type="date" id="booking-date" name="booking-date" value="">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasys</title>
+  </head>
+  <body>
+    <header class="header">
+      <span class="logo">Oasys</span>
+    </header>
+    <main>
+      <h1 class="heading js-heading">Login</h1>
+      <section class="login-page js-login-page">
+        <form class="login-form js-login-form">
+          <label for="username-field">Username</label>
+          <input class="js-username-field" id="username-field" type="text" name="username">
+          <label for="password-field">Password</label>
+          <input class="js-password-field" id="password-field" type="text" name="password">
+          <input type="submit">
+          <p class="js-login-error-message"></p>
         </form>
-        <section class="js-results-section">
+      </section>
+      <section class="customer-dashboard js-customer-dashboard hidden">
+        <section class="dashboard-section">
+          <h2>Total Spent</h2>
+          <p class="js-total-spent"></p>
+        </section>
+        <section class="dashboard-section">
+          <h2>New Booking</h2>
+          <form class="js-new-booking-form">
+            <section class="js-tags-section">
+            </section>
+            <label for="booking-date">Date:</label>
+            <input class="js-date-selector" type="date" id="booking-date" name="booking-date">
+          </form>
+          <section class="js-rooms-section">
+          </section>
+        </section>
+        <section class="dashboard-section">
+          <h2>Current</h2>
+          <div class="js-current-bookings">
+          </div>
+        </section>
+        <section class="dashboard-section">
+          <h2>Past</h2>
+          <div class="js-past-bookings">
+          </div>
         </section>
       </section>
-      <section class="dashboard-section">
-        <h2>Current</h2>
-        <div class="js-current-bookings">
-        </div>
-      </section>
-      <section class="dashboard-section">
-        <h2>Past</h2>
-        <div class="js-past-bookings">
-        </div>
-      </section>
-    </section>
-  </main>
-  <script src="bundle.js"></script>
-</body>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
 </html>
