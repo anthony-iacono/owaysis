@@ -11,7 +11,7 @@ import Hotel from './classes/Hotel';
 // Variables ///////////////////////////////////////////////////////////////////
 
 const currentSection = document.querySelector('.js-current-bookings');
-const customerDashboard = document.querySelector('.js-customer-dashboard');
+const dashboard = document.querySelector('.js-dashboard');
 const dateSelector = document.querySelector('.js-date-selector');
 const defaultDate = document.querySelector('input[type="date"]');
 const heading = document.querySelector('.js-heading');
@@ -55,15 +55,15 @@ function confirmBooking() {
     const roomNumber = parseInt(event.target.parentNode.id);
     api.addBooking(user.id, date, roomNumber)
       .then(() => loadData())
-      .then(() => displayCustomerDashboard());
+      .then(() => displayDashboard());
   }
 }
 
-function displayCustomerDashboard() {
+function displayDashboard() {
   user.getCustomerData(hotel.bookings, hotel.rooms);
-  dom.show(customerDashboard, heading);
+  dom.show(dashboard, heading);
   dom.hide(loginForm);
-  dom.fillHeading('Customer Dashboard', heading);
+  dom.fillHeading('Dashboard', heading);
   dom.fillTotalSpent(user, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);
@@ -120,7 +120,7 @@ function logIn() {
   const customer = hotel.customers.find(customer => customer.id === userID)
   if (customer && usernameIsValid && passwordIsValid) {
     user = new Customer(username, customer.id, customer.name)
-    return displayCustomerDashboard();
+    return displayDashboard();
   }
 
   dom.show(loginError);

@@ -1,5 +1,7 @@
-/* This is an example of how to import a partial scss file*/
-@import '_variables';
+// Partials
+@use 'variables' as *;
+@use 'header' as *;
+
 
 * {
   box-sizing: border-box;
@@ -25,7 +27,7 @@ body {
   color: white;
 }
 
-.customer-dashboard {
+.dashboard {
   display: grid;
   grid-template-columns: 300px 300px 300px 300px;
 
@@ -39,22 +41,10 @@ body {
   padding: 10px;
 }
 
-header {
-  justify-self: flex-start;
-  display: flex;
-  justify-content: center;
-
-  span {
-    font-size: 72px;
-    color: white;
-    padding: 20px;
-    font-family: 'Cinzel Decorative', cursive;
-  }
-}
-
 .main-heading {
   text-align: center;
   padding-top: 10px;
+  font-family: $primary-font
 }
 
 label {
@@ -102,7 +92,7 @@ label {
       color: white;
     }
   }
-  
+
   article {
     text-align: center;
     padding: 10px;
