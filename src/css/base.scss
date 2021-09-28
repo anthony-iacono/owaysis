@@ -38,7 +38,7 @@ body {
   padding: 10px;
 }
 
-.dashboard-section-header {
+.dashboard-section-heading {
   padding: 10px;
 }
 
@@ -130,6 +130,11 @@ main {
   background-color: rgba(#ccb081, 0.86);
   margin: 10px;
   box-shadow: 3px 3px 3px rgb(0 0 0 / 0.8);
+}
+
+.total-spent-heading,
+.total-spent {
+  text-align: center;
 }
 
 .new-booking-form {
