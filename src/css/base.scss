@@ -59,11 +59,10 @@ label {
 
 .login-button {
   cursor: pointer;
-  margin: 20px;
   background-color: rgba(#ccb081, 0.86);
   color: white;
   padding: 5px;
-  // border-radius: 5px;
+  margin: 10px;
 }
 
 ::placeholder,
@@ -71,7 +70,7 @@ input {
   text-align: center;
 }
 
-.input-field:focus::placeholder {
+.login-input:focus::placeholder {
     color: white;
 }
 
@@ -80,12 +79,8 @@ input {
   padding: 10px;
 }
 
-.login-field {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+.login-error-message {
+  padding: 5px;
 }
 
 .login-form {
@@ -93,12 +88,18 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: auto;
   width: 300px;
+  padding: 20px;
   background-color: rgba(#6f91b8, 0.80);
   color: white;
   font-size: 18px;
   border-radius: 10px;
+}
+
+.login-input {
+  margin: 10px;
 }
 
 .logo {
@@ -121,6 +122,7 @@ main {
   background-color: rgba(#ccb081, 0.86);
   margin: 10px;
   border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
 }
 
 .booking-card {

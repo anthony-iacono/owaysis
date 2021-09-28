@@ -15,14 +15,14 @@ const customerDashboard = document.querySelector('.js-customer-dashboard');
 const dateSelector = document.querySelector('.js-date-selector');
 const defaultDate = document.querySelector('input[type="date"]');
 const heading = document.querySelector('.js-heading');
-const loginErrorBox = document.querySelector('.js-login-error-box');
+const loginError = document.querySelector('.js-login-error');
 const loginForm = document.querySelector('.js-login-form');
-const passwordField = document.querySelector('.js-password-field');
+const password = document.querySelector('.js-password');
 const pastSection = document.querySelector('.js-past-bookings');
 const roomsSection = document.querySelector('.js-rooms-section');
 const totalSpentBox = document.querySelector('.js-total-spent');
 const typesSection = document.querySelector('.js-types-section');
-const usernameField = document.querySelector('.js-username-field');
+const username = document.querySelector('.js-username');
 
 let hotel;
 let user;
@@ -111,22 +111,18 @@ function getTodaysDate() {
 
 function logIn() {
   event.preventDefault();
-  const username = usernameField.value;
-  const passwordIsValid = passwordField.value === 'overlook2021';
-  const usernameIsValid = username.slice(0, 8) === 'customer' || username === 'manager';
-  // const username = 'customer2';
+  const usernameIsValid = username.value.slice(0, 8) === 'customer';
+  const passwordIsValid = password.value === 'overlook2021';
   // const passwordIsValid = true;
   // const usernameIsValid = true;
-  const userID = parseInt(username.slice(8));
+  const userID = parseInt(username.value.slice(8));
   const customer = hotel.customers.find(customer => customer.id === userID)
   if (customer && usernameIsValid && passwordIsValid) {
     user = new Customer(username, customer.id, customer.name)
-    displayCustomerDashboard();
-  } else if (usernameIsValid && passwordIsValid) {
-    user = new Manager(username);
-  } else {
-    dom.show(loginErrorBox);
+    return displayCustomerDashboard();
   }
+
+  dom.show(loginError);
 }
 
 function setDate() {
