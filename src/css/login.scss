@@ -1,0 +1,49 @@
+@use 'variables' as *;
+
+.login-button {
+  cursor: pointer;
+  background-color: rgba(#ccb081, 0.86);
+  color: white;
+  padding: 5px;
+  margin: 10px;
+}
+
+.login-error-box {
+  p {
+    padding: 5px;
+  }
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  width: 300px;
+  padding: 20px;
+  background-color: $blue;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+
+  input {
+    margin: 10px;
+    text-align: center;
+
+    &::placeholder {
+      text-align: center;
+    }
+
+    &:focus::placeholder {
+      color: white;
+    }
+  }
+
+  article {
+    text-align: center;
+    padding: 10px;
+  }
+}

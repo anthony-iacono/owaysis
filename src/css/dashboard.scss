@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $blue;
+  color: white;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+
+  section {
+    min-width: 300px;
+    padding: 10px;
+  }
+}
+
+.section-heading {
+  padding: 10px;
+}
+
+.room-card {
+  padding: 10px;
+  background-color: $tan;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: $shadow;
+}
+
+.booking-card {
+  padding: 10px;
+  background-color: $tan;
+  margin: 10px;
+  box-shadow: $shadow;
+}
+
+.total-spent-heading,
+.total-spent {
+  text-align: center;
+}
+
+.new-booking-form {
+  padding: 10px, 10px, 0px, 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+}
+
+.date-selector {
+  text-align: center;
+  width: 200px;
+}
+
+.type {
+  display: block;
+}
