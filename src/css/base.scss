@@ -92,17 +92,17 @@ label {
 
   input {
     margin: 10px;
-  }
-
-  input:focus::placeholder {
-    color: white;
-  }
-
-  ::placeholder,
-  input {
     text-align: center;
-  }
 
+    &::placeholder {
+      text-align: center;
+    }
+
+    &:focus::placeholder {
+      color: white;
+    }
+  }
+  
   article {
     text-align: center;
     padding: 10px;
