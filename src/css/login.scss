@@ -4,7 +4,7 @@
 .login-button {
   margin: 10px;
   padding: 5px;
-  color: white;
+  color: $white;
   background-color: $tan;
   cursor: pointer;
 }
@@ -23,7 +23,7 @@
   width: 300px;
   font-size: 18px;
   text-align: center;
-  color: white;
+  color: $white;
   background-color: $blue;
   border-radius: 10px;
 
@@ -32,7 +32,7 @@
     text-align: center;
 
     &:focus::placeholder {
-      color: white;
+      color: $white;
     }
   }
 

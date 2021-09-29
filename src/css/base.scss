@@ -15,7 +15,7 @@ body {
   @include columnCentered();
   height: 100vh;
   width: 100vw;
-  color: hsla(0, 0%, 100%, 0);
+  color: $white;
   background-image: $primary-background-image;
   background-size: cover;
 }
