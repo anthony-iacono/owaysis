@@ -60,7 +60,8 @@ function confirmBooking() {
 }
 
 function displayDashboard() {
-  customer.getCustomerData(hotel.bookings, hotel.rooms);
+  customer.getBookings(hotel.bookings, hotel.rooms);
+  customer.getTotalSpent();
   dom.show(dashboard, heading);
   dom.hide(loginForm);
   dom.fillHeading('Bookings', heading);

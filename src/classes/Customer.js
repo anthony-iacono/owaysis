@@ -7,11 +7,6 @@ class Customer {
     this.rooms = [];
   }
 
-  getCustomerData(allBookings, allRooms) {
-    this.getBookings(allBookings, allRooms);
-    this.getTotalSpent();
-  }
-
   getBookings(allBookings, allRooms) {
     this.bookings = allBookings.filter(booking => {
       this.getRooms(booking, allRooms);
@@ -20,12 +15,10 @@ class Customer {
   }
 
   getRooms(booking, rooms) {
-    rooms.filter(room => {
+    rooms.forEach(room => {
       if (!this.rooms.includes(room)) {
         this.rooms.push(room);
       }
-
-      return room.number === booking.roomNumber;
     });
   }
 
