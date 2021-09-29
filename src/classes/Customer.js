@@ -1,8 +1,5 @@
-import User from './User';
-
-class Customer extends User {
-  constructor(username, id, name) {
-    super(username)
+class Customer {
+  constructor(id, name) {
     this.id = id;
     this.name = name;
     this.totalSpent;

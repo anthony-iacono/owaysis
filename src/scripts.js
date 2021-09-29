@@ -25,7 +25,7 @@ const typesSection = document.querySelector('.js-types-section');
 const username = document.querySelector('.js-username');
 
 let hotel;
-let user;
+let customer;
 
 // On Load /////////////////////////////////////////////////////////////////////
 
@@ -53,18 +53,18 @@ function confirmBooking() {
   if (window.confirm('Make this booking?')) {
     const date = dateSelector.value.replace(/-/g, '\/');
     const roomNumber = parseInt(event.target.parentNode.id);
-    api.addBooking(user.id, date, roomNumber)
+    api.addBooking(customer.id, date, roomNumber)
       .then(() => loadData())
       .then(() => displayDashboard());
   }
 }
 
 function displayDashboard() {
-  user.getCustomerData(hotel.bookings, hotel.rooms);
+  customer.getCustomerData(hotel.bookings, hotel.rooms);
   dom.show(dashboard, heading);
   dom.hide(loginForm);
   dom.fillHeading('Bookings', heading);
-  dom.fillTotalSpent(user, totalSpentBox);
+  dom.fillTotalSpent(customer, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);
   if (!hotel.availableRooms.length) {
@@ -75,7 +75,7 @@ function displayDashboard() {
 
   hotel.getAvailableTypes();
   dom.fillTypes(hotel.types, typesSection);
-  dom.fillBookings(user, hotel.rooms, dateSelector.value, currentSection, pastSection);
+  dom.fillBookings(customer, hotel.rooms, dateSelector.value, currentSection, pastSection);
 }
 
 function displayFilteredRooms() {
@@ -111,15 +111,16 @@ function getTodaysDate() {
 
 function logIn() {
   event.preventDefault();
-  // const usernameIsValid = username.value.slice(0, 8) === 'customer';
-  // const passwordIsValid = password.value === 'overlook2021';
+  // const isValidUsername = username.value.slice(0, 8) === 'customer';
+  // const isValidPassword = password.value === 'overlook2021';
   username.value = 'customer2';
-  const passwordIsValid = true;
-  const usernameIsValid = true;
-  const userID = parseInt(username.value.slice(8));
-  const customer = hotel.customers.find(customer => customer.id === userID)
-  if (customer && usernameIsValid && passwordIsValid) {
-    user = new Customer(username, customer.id, customer.name)
+  const isValidUsername = true;
+  const isValidPassword = true;
+  const matchingCustomer = hotel.customers.find(customer => {
+    return customer.id === parseInt(username.value.slice(8));
+  })
+  if (isValidUsername && isValidPassword && matchingCustomer) {
+    customer = new Customer(matchingCustomer.id, matchingCustomer.name);
     return displayDashboard();
   }
 
