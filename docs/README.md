@@ -49,7 +49,7 @@ Turing School of Software & Design
 
 ## Planning
 - App development [planned and tracked](https://github.com/anthony-iacono/oasys/projects/2) using GitHub Projects
-- [Wireframe](https://wireframe.cc/pro/pp/21ac20e8f474515)created using [Wireframe.cc](https://wireframe.cc/)
+- [Wireframe](https://wireframe.cc/pro/pp/21ac20e8f474515) created using [Wireframe.cc](https://wireframe.cc/)
 
 ## Wins
   -
