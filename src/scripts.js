@@ -121,7 +121,7 @@ function logIn() {
     return customer.id === parseInt(username.value.slice(8));
   })
   if (isValidUsername && isValidPassword && matchingCustomer) {
-    customer = new Customer(matchingCustomer.id, matchingCustomer.name);
+    customer = new Customer(matchingCustomer.id);
     return displayDashboard();
   }
 

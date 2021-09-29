@@ -1,9 +1,8 @@
 class Customer {
-  constructor(id, name) {
+  constructor(id) {
     this.id = id;
-    this.name = name;
-    this.totalSpent;
     this.bookings;
+    this.totalSpent;
   }
 
   getBookings(allBookings) {

@@ -10,15 +10,16 @@ class Hotel {
   }
 
   getAvailableRooms(selectedDate) {
-    const unavailableRoomNums = [];
-    this.bookings.forEach(booking => {
+    const unavailableRoomNumbers = this.bookings.reduce((acc, booking) => {
       const bookingDate = booking.date.replace(/\//g, '-');
-      if (bookingDate === selectedDate && !unavailableRoomNums.includes(booking.roomNumber)) {
-        unavailableRoomNums.push(booking.roomNumber);
+      if (bookingDate === selectedDate) {
+        acc.push(booking.roomNumber);
       }
-    });
+
+      return acc;
+    }, [])
     this.availableRooms = this.rooms.filter(room => {
-      return !unavailableRoomNums.includes(room.number);
+      return !unavailableRoomNumbers.includes(room.number);
     })
   }
 
