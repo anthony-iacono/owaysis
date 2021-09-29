@@ -48,7 +48,8 @@ Turing School of Software & Design
 [GitHub](https://github.com/turingschool) | [LinkedIn](https://www.linkedin.com/school/turingschool/) | [Website](https://turing.edu/)
 
 ## Planning
-App development planned and tracked using [GitHub Projects](https://github.com/anthony-iacono/oasys/projects/2)
+- App development [planned and tracked](https://github.com/anthony-iacono/oasys/projects/2) using GitHub Projects
+- [Wireframe](https://wireframe.cc/pro/pp/21ac20e8f474515)created using [Wireframe.cc](https://wireframe.cc/)
 
 ## Wins
   -
