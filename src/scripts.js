@@ -49,8 +49,8 @@ function convertToLocal(date) {
  return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 }
 
-function confirmBooking() {
-  if (window.confirm('Make this booking?')) {
+function confirmBooking(event) {
+  if (event.target.type === 'button') {
     const date = dateSelector.value.replace(/-/g, '\/');
     const roomNumber = parseInt(event.target.parentNode.id);
     api.addBooking(customer.id, date, roomNumber)
@@ -112,8 +112,11 @@ function getTodaysDate() {
 
 function logIn() {
   event.preventDefault();
-  const isValidUsername = username.value.slice(0, 8) === 'customer';
-  const isValidPassword = password.value === 'overlook2021';
+  // const isValidUsername = username.value.slice(0, 8) === 'customer';
+  // const isValidPassword = password.value === 'overlook2021';
+  const isValidUsername = true;
+  const isValidPassword = true;
+  username.value = 'customer2';
   const matchingCustomer = hotel.customers.find(customer => {
     return customer.id === parseInt(username.value.slice(8));
   })

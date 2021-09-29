@@ -15,12 +15,13 @@ const dom = {
     section.innerHTML = '';
     availableRooms.forEach(availableRoom => {
       section.innerHTML += `
-        <article class="room-card js-room-card" id='${availableRoom.number}'>
+        <article class="room-card js-room-card" id="${availableRoom.number}">
           <p>Type: ${availableRoom.roomType}</p>
           <p>Bidet: ${availableRoom.bidet}</p>
           <p>Bed Size: ${availableRoom.bedSize}</p>
           <p>No. of Beds: ${availableRoom.numBeds}</p>
           <p>Cost per Night: $${availableRoom.costPerNight}</p>
+          <button class="book-btn" type="button">Book Now</button>
         </article>
       `
     })
