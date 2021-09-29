@@ -21,19 +21,19 @@
   padding: 10px;
 }
 
-.room-card {
+.room-card, .booking-card {
+  margin: 10px;
   padding: 10px;
   background-color: $tan;
-  margin: 10px;
-  border-radius: 10px;
   box-shadow: $shadow;
+
+  p {
+    padding: 3px;
+  }
 }
 
-.booking-card {
-  padding: 10px;
-  background-color: $tan;
-  margin: 10px;
-  box-shadow: $shadow;
+.room-card {
+  border-radius: 10px;
 }
 
 .total-spent-heading,
@@ -42,16 +42,16 @@
 }
 
 .new-booking-form {
-  padding: 10px, 10px, 0px, 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 10px, 10px, 0px, 10px;
   min-height: 100px;
 }
 
 .date-selector {
-  text-align: center;
   width: 200px;
+  text-align: center;
 }
 
 .type {

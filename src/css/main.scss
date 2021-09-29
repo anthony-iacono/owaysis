@@ -2,13 +2,13 @@
 @use 'mixins' as *;
 
 main {
-  width: 90%;
   @include columnCentered();
   align-items: center;
+  width: 90%;
 }
 
 .main-heading {
-  text-align: center;
   padding-top: 10px;
-  font-family: $primary-font
+  font-family: $primary-font;
+  text-align: center;
 }

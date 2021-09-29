@@ -1,9 +1,9 @@
-@use 'variables' as *;
+@use 'dashboard' as *;
 @use 'header' as *;
 @use 'login' as *;
-@use 'dashboard' as *;
 @use 'main' as *;
 @use 'mixins' as *;
+@use 'variables' as *;
 
 * {
   box-sizing: border-box;
@@ -12,12 +12,12 @@
 }
 
 body {
+  @include columnCentered();
+  height: 100vh;
+  width: 100vw;
+  color: hsla(0, 0%, 100%, 0);
   background-image: $primary-background-image;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  @include columnCentered();
-  color: white;
 }
 
 .hidden {
