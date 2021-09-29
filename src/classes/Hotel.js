@@ -9,7 +9,7 @@ class Hotel {
     this.filteredRooms;
   }
 
-  addType(type) {
+  addSelectedType(type) {
     this.selectedTypes.push(type);
   }
 
@@ -47,7 +47,7 @@ class Hotel {
     })
   }
 
-  removeType(type) {
+  removeSelectedType(type) {
     this.selectedTypes = this.selectedTypes.filter(selectedType => {
       return selectedType !== type;
     })

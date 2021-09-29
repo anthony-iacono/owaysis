@@ -49,9 +49,9 @@ function convertToLocal(date) {
  return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 }
 
-function confirmBooking() {
-  if (window.confirm('Make this booking?')) {
-    const date = dateSelector.value.replace(/-/g, '\/');
+function confirmBooking(event) {
+  if (event.target.type === 'button') {
+    const date = dateSelector.value.replace(/-/g, '/');
     const roomNumber = parseInt(event.target.parentNode.id);
     api.addBooking(customer.id, date, roomNumber)
       .then(() => loadData())
@@ -82,9 +82,9 @@ function displayDashboard() {
 function displayFilteredRooms() {
   const checkbox = event.target;
   if (checkbox.checked) {
-    hotel.addType(checkbox.value);
+    hotel.addSelectedType(checkbox.value);
   } else if (!checkbox.checked) {
-    hotel.removeType(checkbox.value);
+    hotel.removeSelectedType(checkbox.value);
   }
   hotel.getFilteredRooms();
   if (!hotel.filteredRooms.length) {
