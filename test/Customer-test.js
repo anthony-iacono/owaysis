@@ -7,7 +7,7 @@ describe('Customer', function() {
   let customer;
 
   beforeEach(function() {
-    customer = new Customer(sample.customer);
+    customer = new Customer(sample.customer.id);
   })
 
   it('should be a function', function() {
@@ -18,11 +18,9 @@ describe('Customer', function() {
     expect(customer).to.be.an.instanceof(Customer);
   });
 
-  it('should store a name', function() {
-    expect(customer.name).to.equal('Leatha Ullrich');
-  });
-
   it('should store an id', function() {
     expect(customer.id).to.equal(1);
   });
+
+  
 });

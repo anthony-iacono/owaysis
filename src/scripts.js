@@ -82,9 +82,9 @@ function displayDashboard() {
 function displayFilteredRooms() {
   const checkbox = event.target;
   if (checkbox.checked) {
-    hotel.addType(checkbox.value);
+    hotel.addSelectedType(checkbox.value);
   } else if (!checkbox.checked) {
-    hotel.removeType(checkbox.value);
+    hotel.removeSelectedType(checkbox.value);
   }
   hotel.getFilteredRooms();
   if (!hotel.filteredRooms.length) {
