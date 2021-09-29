@@ -1,8 +1,8 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 .dashboard-container {
-  display: flex;
-  flex-direction: column;
+  @include columnCentered();
   background-color: $blue;
   color: white;
 }

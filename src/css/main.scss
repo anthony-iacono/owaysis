@@ -1,11 +1,10 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 main {
   width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center
+  @include columnCentered();
+  align-items: center;
 }
 
 .main-heading {

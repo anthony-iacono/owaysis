@@ -2,8 +2,8 @@
 $primary-background-image: url("../images/oasis.jpg");
 
 // Colors
-$blue: rgba(#6f91b8, 0.80);
-$tan: rgba(#ccb081, 0.86);
+$blue: hsla(212, 33%, 57%, 0.85);
+$tan: complement($blue);
 
 // Effects
 $shadow: 3px 3px 3px rgb(0 0 0 / 0.8);
