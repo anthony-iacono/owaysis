@@ -9,6 +9,10 @@ class Hotel {
     this.filteredRooms;
   }
 
+  addType(type) {
+    this.selectedTypes.push(type);
+  }
+
   getAvailableRooms(selectedDate) {
     const unavailableRoomNumbers = this.bookings.reduce((acc, booking) => {
       const bookingDate = booking.date.replace(/\//g, '-');
@@ -41,10 +45,6 @@ class Hotel {
     this.filteredRooms = this.availableRooms.filter(availableRoom => {
       return this.selectedTypes.includes(availableRoom.roomType);
     })
-  }
-
-  addType(type) {
-    this.selectedTypes.push(type);
   }
 
   removeType(type) {
