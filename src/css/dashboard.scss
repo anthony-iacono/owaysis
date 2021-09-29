@@ -1,12 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-.dashboard-container {
-  @include columnCentered();
-  background-color: $blue;
-  color: white;
-}
-
 .dashboard {
   display: grid;
   grid-template-columns: 300px 300px 300px 300px;
@@ -17,8 +11,23 @@
   }
 }
 
-.section-heading {
-  padding: 10px;
+.dashboard-container {
+  @include columnCentered();
+  background-color: $blue;
+  color: white;
+}
+
+.date-selector {
+  width: 200px;
+  text-align: center;
+}
+
+.new-booking-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px, 10px, 0px, 10px;
+  min-height: 100px;
 }
 
 .room-card, .booking-card {
@@ -36,21 +45,12 @@
   border-radius: 10px;
 }
 
-.total-spent-heading,
-.total-spent {
-  text-align: center;
+.section-heading {
+  padding: 10px;
 }
 
-.new-booking-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px, 10px, 0px, 10px;
-  min-height: 100px;
-}
-
-.date-selector {
-  width: 200px;
+.total-spent,
+.total-spent-heading {
   text-align: center;
 }
 
