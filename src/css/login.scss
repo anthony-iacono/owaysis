@@ -1,9 +1,9 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-.login-button {
+.login-btn {
   margin: 10px;
-  padding: 5px;
+  padding: 10px;
   color: $white;
   background-color: $tan;
   cursor: pointer;
