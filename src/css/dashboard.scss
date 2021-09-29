@@ -1,0 +1,59 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.dashboard-container {
+  @include columnCentered();
+  background-color: $blue;
+  color: white;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+
+  section {
+    min-width: 300px;
+    padding: 10px;
+  }
+}
+
+.section-heading {
+  padding: 10px;
+}
+
+.room-card, .booking-card {
+  margin: 10px;
+  padding: 10px;
+  background-color: $tan;
+  box-shadow: $shadow;
+
+  p {
+    padding: 3px;
+  }
+}
+
+.room-card {
+  border-radius: 10px;
+}
+
+.total-spent-heading,
+.total-spent {
+  text-align: center;
+}
+
+.new-booking-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px, 10px, 0px, 10px;
+  min-height: 100px;
+}
+
+.date-selector {
+  width: 200px;
+  text-align: center;
+}
+
+.type {
+  display: block;
+}

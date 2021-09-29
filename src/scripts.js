@@ -11,19 +11,18 @@ import Hotel from './classes/Hotel';
 // Variables ///////////////////////////////////////////////////////////////////
 
 const currentSection = document.querySelector('.js-current-bookings');
-const customerDashboard = document.querySelector('.js-customer-dashboard');
+const dashboard = document.querySelector('.js-dashboard');
 const dateSelector = document.querySelector('.js-date-selector');
 const defaultDate = document.querySelector('input[type="date"]');
 const heading = document.querySelector('.js-heading');
-const loginErrorMessage = document.querySelector('.js-login-error-message');
+const loginError = document.querySelector('.js-login-error');
 const loginForm = document.querySelector('.js-login-form');
-const loginPage = document.querySelector('.js-login-page');
-const passwordField = document.querySelector('.js-password-field');
+const password = document.querySelector('.js-password');
 const pastSection = document.querySelector('.js-past-bookings');
 const roomsSection = document.querySelector('.js-rooms-section');
 const totalSpentBox = document.querySelector('.js-total-spent');
-const typesSection = document.querySelector('.js-tags-section');
-const usernameField = document.querySelector('.js-username-field');
+const typesSection = document.querySelector('.js-types-section');
+const username = document.querySelector('.js-username');
 
 let hotel;
 let user;
@@ -56,15 +55,15 @@ function confirmBooking() {
     const roomNumber = parseInt(event.target.parentNode.id);
     api.addBooking(user.id, date, roomNumber)
       .then(() => loadData())
-      .then(() => displayCustomerDashboard());
+      .then(() => displayDashboard());
   }
 }
 
-function displayCustomerDashboard() {
+function displayDashboard() {
   user.getCustomerData(hotel.bookings, hotel.rooms);
-  dom.show(customerDashboard);
-  dom.hide(loginPage);
-  heading.innerText = 'Customer Dashboard';
+  dom.show(dashboard, heading);
+  dom.hide(loginForm);
+  dom.fillHeading('Dashboard', heading);
   dom.fillTotalSpent(user, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);
@@ -112,19 +111,19 @@ function getTodaysDate() {
 
 function logIn() {
   event.preventDefault();
-  const username = usernameField.value;
-  const passwordIsValid = passwordField.value === 'overlook2021';
-  const usernameIsValid = username.slice(0, 8) === 'customer';
-  const userID = parseInt(username.slice(8));
+  // const usernameIsValid = username.value.slice(0, 8) === 'customer';
+  // const passwordIsValid = password.value === 'overlook2021';
+  username.value = 'customer2';
+  const passwordIsValid = true;
+  const usernameIsValid = true;
+  const userID = parseInt(username.value.slice(8));
   const customer = hotel.customers.find(customer => customer.id === userID)
   if (customer && usernameIsValid && passwordIsValid) {
     user = new Customer(username, customer.id, customer.name)
-    displayCustomerDashboard();
-  } else if (username === 'manager' && passwordIsValid) {
-    user = new Manager(username);
-  } else {
-    loginErrorMessage.innerText = 'Sorry, the username or password you entered is not recognized. Please try again.'
+    return displayDashboard();
   }
+
+  dom.show(loginError);
 }
 
 function setDate() {

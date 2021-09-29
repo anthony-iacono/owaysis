@@ -1,0 +1,14 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+main {
+  @include columnCentered();
+  align-items: center;
+  width: 90%;
+}
+
+.main-heading {
+  padding-top: 10px;
+  font-family: $primary-font;
+  text-align: center;
+}

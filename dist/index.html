@@ -4,51 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
     <title>Oasys</title>
   </head>
   <body>
-    <header class="header">
-      <span class="logo">Oasys</span>
+    <header>
+      <span>Oasys</span>
     </header>
     <main>
-      <h1 class="heading js-heading">Login</h1>
-      <section class="login-page js-login-page">
-        <form class="login-form js-login-form">
-          <label for="username-field">Username</label>
-          <input class="js-username-field" id="username-field" type="text" name="username">
-          <label for="password-field">Password</label>
-          <input class="js-password-field" id="password-field" type="text" name="password">
-          <input type="submit">
-          <p class="js-login-error-message"></p>
-        </form>
-      </section>
-      <section class="customer-dashboard js-customer-dashboard hidden">
-        <section class="dashboard-section">
-          <h2>Total Spent</h2>
-          <p class="js-total-spent"></p>
-        </section>
-        <section class="dashboard-section">
-          <h2>New Booking</h2>
-          <form class="js-new-booking-form">
-            <section class="js-tags-section">
+      <form class="login-form js-login-form">
+        <input class="js-username" aria-label="username" type="text" placeholder="Username">
+        <input class="js-password" aria-label="password" type="password" name="password" placeholder="Password">
+        <input class="login-button" type="submit">
+        <article class="login-error-box hidden js-login-error-box">
+          <p>Sorry, the username or password you entered is not recognized.</p>
+          <p>Please try again.</p>
+        </article>
+      </form>
+      <div class="dashboard-container">
+        <h1 class="main-heading hidden js-heading">Login</h1>
+        <section class="dashboard js-dashboard hidden">
+          <section>
+            <h2 class="section-heading total-spent-heading">Total Spent</h2>
+            <p class="total-spent js-total-spent"></p>
+          </section>
+          <section>
+            <h2 class="section-heading">New Booking</h2>
+            <form class="new-booking-form js-new-booking-form">
+              <input class="date-selector js-date-selector" type="date" aria-label="date">
+              <section class="types-section js-types-section">
+              </section>
+            </form>
+            <section class="js-rooms-section">
             </section>
-            <label for="booking-date">Date:</label>
-            <input class="js-date-selector" type="date" id="booking-date" name="booking-date">
-          </form>
-          <section class="js-rooms-section">
+          </section>
+          <section>
+            <h2 class="section-heading">Current</h2>
+            <div class="js-current-bookings">
+            </div>
+          </section>
+          <section>
+            <h2 class="section-heading">Past</h2>
+            <div class="js-past-bookings">
+            </div>
           </section>
         </section>
-        <section class="dashboard-section">
-          <h2>Current</h2>
-          <div class="js-current-bookings">
-          </div>
-        </section>
-        <section class="dashboard-section">
-          <h2>Past</h2>
-          <div class="js-past-bookings">
-          </div>
-        </section>
-      </section>
+      </div>
     </main>
     <script src="bundle.js"></script>
   </body>

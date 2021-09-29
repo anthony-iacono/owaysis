@@ -1,51 +1,23 @@
-/* This is an example of how to import a partial scss file*/
-@import '_variables';
+@use 'dashboard' as *;
+@use 'header' as *;
+@use 'login' as *;
+@use 'main' as *;
+@use 'mixins' as *;
+@use 'variables' as *;
 
 * {
   box-sizing: border-box;
-  border: 1px solid black;
   margin: 0;
   font-family: sans-serif;
 }
 
 body {
-  background: $primary-background;
-}
-
-.customer-dashboard {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.dashboard-section {
-  min-width: 300px;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-}
-
-.heading {
-  text-align: center;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo {
-  font-size: 72px;
+  @include columnCentered();
+  height: 100vh;
+  width: 100vw;
+  color: $white;
+  background-image: $primary-background-image;
+  background-size: cover;
 }
 
 .hidden {
