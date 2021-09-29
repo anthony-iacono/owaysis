@@ -4,33 +4,21 @@ class Customer {
     this.name = name;
     this.totalSpent;
     this.bookings;
-    this.rooms = [];
   }
 
-  getBookings(allBookings, allRooms) {
-    this.bookings = allBookings.filter(booking => {
-      this.getRooms(booking, allRooms);
-      return booking.userID === this.id;
-    });
+  getBookings(allBookings) {
+    this.bookings = allBookings.filter(booking => booking.userID === this.id);
   }
 
-  getRooms(booking, rooms) {
-    rooms.forEach(room => {
-      if (!this.rooms.includes(room)) {
-        this.rooms.push(room);
-      }
-    });
-  }
-
-  getTotalSpent() {
+  getTotalSpent(allRooms) {
     const totalSpent = this.bookings.reduce((total, booking) => {
-      const matchingRoom = this.rooms.find(room => {
+      const matchingRoom = allRooms.find(room => {
         return room.number === booking.roomNumber;
       });
       total += matchingRoom.costPerNight;
       return total;
     }, 0);
-    this.totalSpent = Math.round(totalSpent * 100) / 100;
+    this.totalSpent = (Math.round(totalSpent * 100) / 100).toLocaleString();
   }
 }
 

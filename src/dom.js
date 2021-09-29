@@ -26,11 +26,11 @@ const dom = {
     })
   },
 
-  fillBookings(user, rooms, selectedDate, currentSection, pastSection) {
+  fillBookings(user, allRooms, selectedDate, currentSection, pastSection) {
     currentSection.innerHTML = '';
     pastSection.innerHTML = '';
     user.bookings.forEach(booking => {
-      const room = user.rooms.find(room => room.number === booking.roomNumber);
+      const room = allRooms.find(room => room.number === booking.roomNumber);
       let section = pastSection;
       if (Date.parse(booking.date) >= Date.parse(selectedDate)) {
         section = currentSection;
