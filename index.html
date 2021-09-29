@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <title>Oasys</title>
+  </head>
+  <body>
+    <header>
+      <span>Oasys</span>
+    </header>
+    <main>
+      <form class="login-form js-login-form">
+        <input class="js-username" aria-label="username" type="text" placeholder="Username">
+        <input class="js-password" aria-label="password" type="password" name="password" placeholder="Password">
+        <input class="login-button" type="submit" value="submit">
+        <article class="login-error-box hidden js-login-error">
+          <p>Sorry, the username or password you entered is not recognized.</p>
+          <p>Please try again.</p>
+        </article>
+      </form>
+      <div class="dashboard-container">
+        <h1 class="main-heading hidden js-heading">Login</h1>
+        <section class="dashboard js-dashboard hidden">
+          <section>
+            <h2 class="section-heading total-spent-heading">Total</h2>
+            <p class="total-spent js-total-spent"></p>
+          </section>
+          <section>
+            <h2 class="section-heading">New</h2>
+            <form class="new-booking-form js-new-booking-form">
+              <input class="date-selector js-date-selector" type="date" aria-label="date">
+              <section class="types-section js-types-section">
+              </section>
+            </form>
+            <section class="js-rooms-section">
+            </section>
+          </section>
+          <section>
+            <h2 class="section-heading">Current</h2>
+            <div class="js-current-bookings">
+            </div>
+          </section>
+          <section>
+            <h2 class="section-heading">Past</h2>
+            <div class="js-past-bookings">
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
 </html>
