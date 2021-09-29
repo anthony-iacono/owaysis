@@ -1,6 +1,10 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
+.booking-card {
+  background-color: lighten($tan, 10%);
+}
+
 .dashboard {
   display: grid;
   grid-template-columns: 300px 300px 300px 300px;
@@ -25,23 +29,30 @@
 .new-booking-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   padding: 10px, 10px, 0px, 10px;
   min-height: 100px;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: auto;
+  }
 }
 
 .room-card, .booking-card {
   margin: 10px;
   padding: 10px;
-  background-color: $tan;
   box-shadow: $shadow;
-
   p {
     padding: 3px;
   }
 }
 
 .room-card {
+  background-color: $tan;
+  cursor: pointer;
   border-radius: 10px;
 }
 

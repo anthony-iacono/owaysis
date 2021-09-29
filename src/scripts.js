@@ -63,7 +63,7 @@ function displayDashboard() {
   user.getCustomerData(hotel.bookings, hotel.rooms);
   dom.show(dashboard, heading);
   dom.hide(loginForm);
-  dom.fillHeading('Dashboard', heading);
+  dom.fillHeading('Bookings', heading);
   dom.fillTotalSpent(user, totalSpentBox);
   setDate();
   hotel.getAvailableRooms(dateSelector.value);
