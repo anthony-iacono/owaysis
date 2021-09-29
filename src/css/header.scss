@@ -6,8 +6,10 @@ header {
 
   span {
     padding: 20px;
+    width: 300px;
     font-family: $primary-font;
     font-size: 72px;
     color: $white;
+    background-color: $blue;
   }
 }
