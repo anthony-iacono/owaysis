@@ -1,6 +1,6 @@
 const api = {
   getAllCustomers() {
-    return fetch('http://localhost:3001/api/v1/customers')
+    return fetch('http://overlookdata.herokuapp.com/api/v1/customers')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -10,7 +10,7 @@ const api = {
   },
 
   getCustomer(id) {
-    return fetch(`http://localhost:3001/api/v1/customers/${id}`)
+    return fetch(`http://overlookdata.herokuapp.com/api/v1/customers/${id}`)
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -20,7 +20,7 @@ const api = {
   },
 
   getAllRooms() {
-    return fetch('http://localhost:3001/api/v1/rooms')
+    return fetch('http://overlookdata.herokuapp.com/api/v1/rooms')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -30,7 +30,7 @@ const api = {
   },
 
   getAllBookings() {
-    return fetch('http://localhost:3001/api/v1/bookings')
+    return fetch('http://overlookdata.herokuapp.com/api/v1/bookings')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -39,8 +39,8 @@ const api = {
       .catch(error => console.error(error));
   },
 
-  addBooking(userID, date, roomNumber) {  
-    return fetch('http://localhost:3001/api/v1/bookings', {
+  addBooking(userID, date, roomNumber) {
+    return fetch('http://overlookdata.herokuapp.com/api/v1/bookings', {
       method: 'POST',
       body: JSON.stringify({
         userID: userID,
@@ -61,7 +61,7 @@ const api = {
   },
 
   deleteBooking(id) {
-    return fetch(`http://localhost:3001/api/v1/bookings/${id}`, {
+    return fetch(`http://overlookdata.herokuapp.com/api/v1/bookings/${id}`, {
       method: 'DELETE',
       headears: { 'Content-Type': 'application/json' }
     })
