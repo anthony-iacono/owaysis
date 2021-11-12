@@ -495,7 +495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const api = {
   getAllCustomers() {
-    return fetch('http://overlookdata.herokuapp.com/api/v1/customers')
+    return fetch('https://overlookdata.herokuapp.com/api/v1/customers')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -505,7 +505,7 @@ const api = {
   },
 
   getCustomer(id) {
-    return fetch(`http://overlookdata.herokuapp.com/api/v1/customers/${id}`)
+    return fetch(`https://overlookdata.herokuapp.com/api/v1/customers/${id}`)
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -515,7 +515,7 @@ const api = {
   },
 
   getAllRooms() {
-    return fetch('http://overlookdata.herokuapp.com/api/v1/rooms')
+    return fetch('https://overlookdata.herokuapp.com/api/v1/rooms')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -525,7 +525,7 @@ const api = {
   },
 
   getAllBookings() {
-    return fetch('http://overlookdata.herokuapp.com/api/v1/bookings')
+    return fetch('https://overlookdata.herokuapp.com/api/v1/bookings')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -535,7 +535,7 @@ const api = {
   },
 
   addBooking(userID, date, roomNumber) {
-    return fetch('http://overlookdata.herokuapp.com/api/v1/bookings', {
+    return fetch('https://overlookdata.herokuapp.com/api/v1/bookings', {
       method: 'POST',
       body: JSON.stringify({
         userID: userID,
@@ -556,7 +556,7 @@ const api = {
   },
 
   deleteBooking(id) {
-    return fetch(`http://overlookdata.herokuapp.com/api/v1/bookings/${id}`, {
+    return fetch(`https://overlookdata.herokuapp.com/api/v1/bookings/${id}`, {
       method: 'DELETE',
       headears: { 'Content-Type': 'application/json' }
     })
