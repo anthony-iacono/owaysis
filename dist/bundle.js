@@ -495,7 +495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const api = {
   getAllCustomers() {
-    return fetch('http://localhost:3001/api/v1/customers')
+    return fetch('http://overlookdata.herokuapp.com/api/v1/customers')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -505,7 +505,7 @@ const api = {
   },
 
   getCustomer(id) {
-    return fetch(`http://localhost:3001/api/v1/customers/${id}`)
+    return fetch(`http://overlookdata.herokuapp.com/api/v1/customers/${id}`)
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -515,7 +515,7 @@ const api = {
   },
 
   getAllRooms() {
-    return fetch('http://localhost:3001/api/v1/rooms')
+    return fetch('http://overlookdata.herokuapp.com/api/v1/rooms')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -525,7 +525,7 @@ const api = {
   },
 
   getAllBookings() {
-    return fetch('http://localhost:3001/api/v1/bookings')
+    return fetch('http://overlookdata.herokuapp.com/api/v1/bookings')
       .then(response => {
         this.checkHttpError(response);
         return response.json();
@@ -534,8 +534,8 @@ const api = {
       .catch(error => console.error(error));
   },
 
-  addBooking(userID, date, roomNumber) {  
-    return fetch('http://localhost:3001/api/v1/bookings', {
+  addBooking(userID, date, roomNumber) {
+    return fetch('http://overlookdata.herokuapp.com/api/v1/bookings', {
       method: 'POST',
       body: JSON.stringify({
         userID: userID,
@@ -556,7 +556,7 @@ const api = {
   },
 
   deleteBooking(id) {
-    return fetch(`http://localhost:3001/api/v1/bookings/${id}`, {
+    return fetch(`http://overlookdata.herokuapp.com/api/v1/bookings/${id}`, {
       method: 'DELETE',
       headears: { 'Content-Type': 'application/json' }
     })
@@ -686,14 +686,17 @@ class Customer {
   }
 
   getTotalSpent(allRooms) {
-    const totalSpent = this.bookings.reduce((total, booking) => {
+    let totalSpent = this.bookings.reduce((total, booking) => {
       const matchingRoom = allRooms.find(room => {
         return room.number === booking.roomNumber;
       });
       total += matchingRoom.costPerNight;
       return total;
     }, 0);
-    this.totalSpent = (Math.round(totalSpent * 100) / 100).toLocaleString();
+    totalSpent = (Math.round(totalSpent * 100) / 100).toFixed(2);
+    const dollars = parseFloat(totalSpent.split('.')[0]).toLocaleString();
+    const cents = totalSpent.split('.')[1];
+    this.totalSpent = `${dollars}.${cents}`;
   }
 }
 
@@ -845,7 +848,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
 /* harmony import */ var _classes_Customer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
 /* harmony import */ var _classes_Hotel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11);
-// Imports /////////////////////////////////////////////////////////////////////
+// Imports
 
 
 
@@ -855,7 +858,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Variables ///////////////////////////////////////////////////////////////////
+// Variables
 
 const currentSection = document.querySelector('.js-current-bookings');
 const dashboard = document.querySelector('.js-dashboard');
@@ -874,26 +877,30 @@ const username = document.querySelector('.js-username');
 let hotel;
 let customer;
 
-// On Load /////////////////////////////////////////////////////////////////////
+// On Load
 
 const loadData = () => {
-  return Promise.all([_api__WEBPACK_IMPORTED_MODULE_1__.default.getAllCustomers(), _api__WEBPACK_IMPORTED_MODULE_1__.default.getAllRooms(), _api__WEBPACK_IMPORTED_MODULE_1__.default.getAllBookings()])
+  return Promise.all([
+    _api__WEBPACK_IMPORTED_MODULE_1__.default.getAllCustomers(),
+    _api__WEBPACK_IMPORTED_MODULE_1__.default.getAllRooms(),
+    _api__WEBPACK_IMPORTED_MODULE_1__.default.getAllBookings()
+  ])
     .then(data => hotel = new _classes_Hotel__WEBPACK_IMPORTED_MODULE_4__.default(data[0], data[1], data[2]));
 }
 
 window.onload = loadData();
 
-// Event Listeners /////////////////////////////////////////////////////////////
+// Event Listeners
 
 dateSelector.addEventListener('change', displayRooms);
 loginForm.addEventListener('submit', logIn);
 roomsSection.addEventListener('click', confirmBooking);
 typesSection.addEventListener('change', displayFilteredRooms);
 
-// Functions ///////////////////////////////////////////////////////////////////
+// Functions
 
 function convertToLocal(date) {
- return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+  return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 }
 
 function confirmBooking(event) {
@@ -923,7 +930,13 @@ function displayDashboard() {
 
   hotel.getAvailableTypes();
   _dom__WEBPACK_IMPORTED_MODULE_2__.default.fillTypes(hotel.types, typesSection);
-  _dom__WEBPACK_IMPORTED_MODULE_2__.default.fillBookings(customer, hotel.rooms, dateSelector.value, currentSection, pastSection);
+  _dom__WEBPACK_IMPORTED_MODULE_2__.default.fillBookings(
+    customer,
+    hotel.rooms,
+    dateSelector.value,
+    currentSection,
+    pastSection
+  );
 }
 
 function displayFilteredRooms() {
