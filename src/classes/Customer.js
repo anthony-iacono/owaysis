@@ -10,14 +10,17 @@ class Customer {
   }
 
   getTotalSpent(allRooms) {
-    const totalSpent = this.bookings.reduce((total, booking) => {
+    let totalSpent = this.bookings.reduce((total, booking) => {
       const matchingRoom = allRooms.find(room => {
         return room.number === booking.roomNumber;
       });
       total += matchingRoom.costPerNight;
       return total;
     }, 0);
-    this.totalSpent = (Math.round(totalSpent * 100) / 100).toLocaleString();
+    totalSpent = (Math.round(totalSpent * 100) / 100).toFixed(2);
+    const dollars = parseFloat(totalSpent.split('.')[0]).toLocaleString();
+    const cents = totalSpent.split('.')[1];
+    this.totalSpent = `${dollars}.${cents}`;
   }
 }
 

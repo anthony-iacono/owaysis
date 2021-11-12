@@ -21,7 +21,6 @@ describe('Customer', function() {
   });
 
   it('should store an id', function() {
-    console.log(customer.bookings);
     expect(customer.id).to.equal(9);
   });
 

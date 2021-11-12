@@ -1,4 +1,4 @@
-// Imports /////////////////////////////////////////////////////////////////////
+// Imports
 
 import './css/base.scss';
 
@@ -8,7 +8,7 @@ import dom from './dom';
 import Customer from './classes/Customer';
 import Hotel from './classes/Hotel';
 
-// Variables ///////////////////////////////////////////////////////////////////
+// Variables
 
 const currentSection = document.querySelector('.js-current-bookings');
 const dashboard = document.querySelector('.js-dashboard');
@@ -27,26 +27,30 @@ const username = document.querySelector('.js-username');
 let hotel;
 let customer;
 
-// On Load /////////////////////////////////////////////////////////////////////
+// On Load
 
 const loadData = () => {
-  return Promise.all([api.getAllCustomers(), api.getAllRooms(), api.getAllBookings()])
+  return Promise.all([
+    api.getAllCustomers(),
+    api.getAllRooms(),
+    api.getAllBookings()
+  ])
     .then(data => hotel = new Hotel(data[0], data[1], data[2]));
 }
 
 window.onload = loadData();
 
-// Event Listeners /////////////////////////////////////////////////////////////
+// Event Listeners
 
 dateSelector.addEventListener('change', displayRooms);
 loginForm.addEventListener('submit', logIn);
 roomsSection.addEventListener('click', confirmBooking);
 typesSection.addEventListener('change', displayFilteredRooms);
 
-// Functions ///////////////////////////////////////////////////////////////////
+// Functions
 
 function convertToLocal(date) {
- return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+  return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 }
 
 function confirmBooking(event) {
@@ -76,7 +80,13 @@ function displayDashboard() {
 
   hotel.getAvailableTypes();
   dom.fillTypes(hotel.types, typesSection);
-  dom.fillBookings(customer, hotel.rooms, dateSelector.value, currentSection, pastSection);
+  dom.fillBookings(
+    customer,
+    hotel.rooms,
+    dateSelector.value,
+    currentSection,
+    pastSection
+  );
 }
 
 function displayFilteredRooms() {
