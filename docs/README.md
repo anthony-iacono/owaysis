@@ -5,7 +5,7 @@
 
 
 ## Deployment
-Access the latest deployment [here](https://anthony-iacono.github.io/oasys/)
+Visit the [deployed app](https://anthony-iacono.github.io/oasys/). You may need to wait several seconds for the API server to spin up on Heroku.
 
 ## Demo
 [gif]
