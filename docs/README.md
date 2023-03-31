@@ -56,3 +56,5 @@ Turing School of Software & Design
 
 ## Future Iterations
   - Add a separate manager user type with the ability to delete bookings and view relevant stats, such as total revenue for today's date and current occupancy rate
+  
+// Example commit made in the web editor for GitHub support ticket 1919243
